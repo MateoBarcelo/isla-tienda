@@ -1,33 +1,33 @@
-import { useState } from "react"
-export default function Filters( { onChange }) {
+import { useContext, useState } from "react"
+import { FiltersContext } from "../context/filters"
+export default function Filters() {
 
-    const [maxPrice, setMaxPrice] = useState(1000)
+    const { filters, setFilters } = useContext(FiltersContext)
 
     const handleMaxChange = (event) => {
-        setMaxPrice(event.target.value)
-        onChange(prevState => ({
+        setFilters(prevState => ({
             ...prevState,
             maxPrice: event.target.value
         }))
     }
 
     const handleChangeCategory = (event) => {
-        onChange(prevState => ({
+        setFilters(prevState => ({
             ...prevState,
             category: event.target.value
         }))
     }
 
     return(
-        <section className="flex items-center justify-between text-sm [&>*]:flex [&>*]:gap-4 p-4">
-            <div>
-                <label htmlFor="price">Precio</label>
-                <input type="range" id="price" min={0} max={10000} onChange={handleMaxChange} value={maxPrice} step={1000} />
-                <span>${maxPrice}</span>
+        <section className="flex items-center space-x-12 text-sm [&>div]:flex [&>*]:gap-4 border-mint-900">
+            <div className="flex-col">
+                <label htmlFor="price" className="text-center text-lg text-mint-900 -mb-3">Precio máximo</label>
+                <input type="range" id="price" className="w-[125px] appearance-none h-0.5 bg-mint-500 rounded-lg [&::-moz-range-thumb]:bg-mint-900 [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:h-[8px] [&::-moz-range-thumb]:w-[8px]
+                [&::-webkit-slider-thumb]:bg-mint-900 [&::-webkit-slider-thumb]:border-none [&::-webkit-slider-thumb]:h-[8px] [&::-webkit-slider-thumb]:w-[8px] [&::-webkit-slider-runnable-track]:bg-mint-900 [&::-moz-range-progress]:bg-mint-900" min={0} max={10000} onChange={handleMaxChange} value={filters.maxPrice} step={500} />
+                {/*<span>${maxPrice}</span>*/}
             </div>
-            <div>
-                <label htmlFor="category">Categoría</label>
-                <select id="category" onChange={handleChangeCategory}>
+            <div className="categoryselector">
+                <select onChange={handleChangeCategory}>
                     <option value='all'>Todos</option>
                     <option value='estanterias'>Estanterias</option>
                     <option value='decorados'>Decorados</option>
