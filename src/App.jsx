@@ -23,6 +23,7 @@ function App() {
   return (
     <div className='bg-mint-100'>
       <Header />
+
       <Banner/>
       <ItemSection />
       <section className='flex flex-col text-center md:flex-row md:text-left justify-between items-center md:px-32 p-12'>
@@ -33,6 +34,7 @@ function App() {
           <Filters />
       </section>
       <Products products={filteredProducts} />
+      
     </div>
   )
 }

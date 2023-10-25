@@ -1,8 +1,9 @@
 import Filters from '../Filters.jsx'
 import { CartIcon } from '../Icons.jsx'
-import { useState } from 'react'
+import { useState, useId } from 'react'
 import MenuLinks from './MenuLinks.jsx'
 import CartButton from './CartButton.jsx'
+import { Cart } from '../Cart.jsx'
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false)
@@ -10,6 +11,8 @@ export function Header() {
     const handleMobileMenu = () => {
         setIsOpen(!isOpen)
     }
+
+    const cartCheckboxId = useId()
 
     const renderMobileMenu = () => {
         return (
@@ -46,9 +49,11 @@ export function Header() {
                     Contacto
                 </li>
                 <li>
-                    <CartButton />
+                   <Cart />
                 </li>
+              
             </ul>
+    
             <div className='md:hidden'>
                 <button className='text-mint-900 font-bold text-2xl' onClick={handleMobileMenu}>
                     ☰
