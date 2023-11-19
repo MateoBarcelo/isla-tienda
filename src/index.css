@@ -64,3 +64,65 @@ border: none;
 word-break: normal;
 }
 
+.cartenter {
+  animation: enterRight 0.5s ease-in-out forwards;
+}
+.cartleave {
+  animation: leaveRight 0.5s ease-in-out forwards;
+}
+.enterUp {
+  animation: enterUp 0.7s ease-in-out forwards;
+}
+.enterIn {
+  animation: enterIn 0.2s ease-in-out forwards;
+}
+.leaveOut {
+  animation: leaveOut 0.1s ease-in-out forwards;
+}
+@keyframes enterRight {
+  0% {
+    transform: translateX(110%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes leaveRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(110%);
+  }
+}
+@keyframes enterUp {
+  0% {
+    opacity: 0;
+    transform: translateY(110%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes enterIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes leaveOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+

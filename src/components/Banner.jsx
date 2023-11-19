@@ -1,3 +1,5 @@
+import Button from './Button'
+
 export function Banner() {
 
     const handleButton = () => {
@@ -9,7 +11,7 @@ export function Banner() {
                 <span className="flex flex-col justify-center items-center text-center md:text-left md:block mt-20 space-y-4 md:mt-0 md:space-y-6 text-mint-900">
                     <h1 className="text-5xl md:text-5xl font-bold tracking-wide">Bienvenido a isla</h1>
                     <p className="text-2xl md:text-2xl font-regular">Los mejores artículos en madera del <br></br>mercado, a precios muy accesibles!</p>
-                    <button className="bg-mint-900 w-1/2 md:w-auto py-2 px-6 rounded-md text-mint-50 font-semibold hover:bg-mint-700 hover:text-white active:transform active:translate-y-1 transition-all" onClick={handleButton}>Ver catálogo</button>
+                    <Button onClick={handleButton} title="Ver catálogo" />                
                 </span>
             </div>
             <div className="flex justify-center items-center">

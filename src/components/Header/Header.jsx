@@ -1,18 +1,21 @@
 import Filters from '../Filters.jsx'
-import { CartIcon } from '../Icons.jsx'
-import { useState, useId } from 'react'
+import { CartIcon, UserIcon } from '../Icons.jsx'
+import { useState, useId, useContext } from 'react'
 import MenuLinks from './MenuLinks.jsx'
 import CartButton from './CartButton.jsx'
 import { Cart } from '../Cart.jsx'
+import { CartContext } from '../../context/cart.jsx'
+import { Link } from 'react-router-dom'
+import { useAuth } from '../../context/auth.jsx'
+import UserButton from './UserButton.jsx'
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false)
+    const { accessToken } = useAuth()
 
     const handleMobileMenu = () => {
         setIsOpen(!isOpen)
     }
-
-    const cartCheckboxId = useId()
 
     const renderMobileMenu = () => {
         return (
@@ -32,12 +35,16 @@ export function Header() {
             </div>
         )
     }
+
+    
     return(
-        <header className='w-full h-[70px] md:h-[90px] bg-mint-50 px-20 flex justify-between items-center'>
+        <header className='w-full h-[70px] md:h-[90px] bg-mint-50 px-28 flex justify-between items-center'>
             <img src='logo.png' alt='Logo Isla' className='w-[165px]'/>
             <ul className='hidden md:flex space-x-14 text-mint-900 font-sans font-bold items-center'>
                 <li>
+                    <Link to='/'>
                     Inicio
+                    </Link>
                 </li>
                 <li>
                     Productos
@@ -48,10 +55,35 @@ export function Header() {
                 <li>
                     Contacto
                 </li>
-                <li>
-                   <Cart />
-                </li>
-              
+                {accessToken ? (                
+                    <div className='flex space-x-10'>
+                        <li>
+                        <Cart />
+                        </li>
+                        <li>
+                        <button className={`relative w-[34px] h-[34px] p-1 flex items-center justify-center bg-[#F5F7F4] rounded-lg shadow-md`}>
+                            <UserButton />
+                        </button>
+                        </li>
+                    </div>
+                    ) : (
+                    <div className='flex space-x-4'>
+                        <li>
+                            <Link to='/login'>
+                                <button className='bg-white border-mint-900 text-mint-900 px-3 py-1 text-sm rounded-lg shadow-md transform active:translate-y-1 transition-all'>
+                                    Iniciar sesión
+                                </button>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to='/register'>
+                                <button className='bg-mint-900 text-mint-50 px-3 py-1 text-sm rounded-lg shadow-md transform active:translate-y-1 transition-all'>
+                                    Registrarse
+                                </button>
+                            </Link>
+                        </li>
+                    </div>
+                    )}
             </ul>
     
             <div className='md:hidden'>
