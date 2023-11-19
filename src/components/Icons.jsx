@@ -38,6 +38,15 @@ export function AddToCartIcon () {
     )
   }
 
+export function UserIcon() {
+  return(
+    <svg width="30" height="20" viewBox="0 0 30 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M28 31.25V28C28 26.2761 27.3152 24.6228 26.0962 23.4038C24.8772 22.1848 23.2239 21.5 21.5 21.5H8.5C6.77609 21.5 5.12279 22.1848 3.90381 23.4038C2.68482 24.6228 2 26.2761 2 28V31.25" stroke="#1F443D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M15.0001 15C18.59 15 21.5001 12.0899 21.5001 8.5C21.5001 4.91015 18.59 2 15.0001 2C11.4103 2 8.50012 4.91015 8.50012 8.5C8.50012 12.0899 11.4103 15 15.0001 15Z" stroke="#1F443D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  )
+}
+
 export function CartIcon() {
     return (
       <svg

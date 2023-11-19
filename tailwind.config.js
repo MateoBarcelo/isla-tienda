@@ -8,9 +8,7 @@ export default {
   ],
   theme: {
     extend: {
-      
-    },
-    colors: {
+      colors: {
         'mint': {
           50: "#E5EEE7",
           100: "#D7E7DA",
@@ -19,6 +17,7 @@ export default {
           700: "#327262",
           900: "#1F443D"
         }
+    }
     },
     fontFamily: {
       'sans': ['Raleway', ...defaultTheme.fontFamily.sans]
