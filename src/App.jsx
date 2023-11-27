@@ -1,10 +1,5 @@
-import { useContext, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
-import { CartIcon } from './components/Icons'
-import { Products } from './components/Products'
-import { products as initialProducts } from './mocks/products.json'
 import Filters from './components/Filters'
 import { Header } from './components/Header/Header'
 import { Banner } from './components/Banner'
@@ -18,11 +13,15 @@ import { Route, Routes } from 'react-router-dom'
 import { NewProduct } from './components/Products/NewProduct'
 import { FiltersProvider } from './context/filters'
 import { useProducts } from './hooks/useProducts'
+import { Checkout } from './components/Pages/Checkout'
+import ProductSlider from './components/ProductSlider'
+import Button from './components/Button'
+import { Products } from './components/Pages/Products'
+import { Payment } from './components/Pages/Payment'
+
 function App() {
 
   const Home = () => {
-    //const [products] = useState(initialProducts)
-    const [filterProducts, setFilters] = useFilters()
   
     const {products} = useProducts()
     return (
@@ -34,10 +33,15 @@ function App() {
                 <h1 className='md:text-3xl text-4xl text-mint-900 font-semibold'>Nuestros productos</h1>
                 <p className='text-lg text-mint-900'>Encontrá calidad al mejor precio</p>
             </div>
-              <Filters />
         </section>
-      
-        <Products products={filterProducts(products)} />
+        <ProductSlider products={products} />
+        <div className='flex items-center justify-center py-10'>
+          <button onClick={() => window.location.href="/products"} className={`bg-mint-900 hover:bg-mint-700 active:transform active:translate-y-1 w-1/2 md:w-auto py-2 px-8 text-xl rounded-md text-mint-50 font-semibold hover:text-white transition-all`}
+          >
+              Ver todos
+          </button>
+        </div>
+        
       </>
     )
   }
@@ -46,10 +50,13 @@ function App() {
         <CartProvider>
           <Header />
           <Routes>
-            <Route path='/' element={<FiltersProvider><Home /></FiltersProvider>} />
+            <Route path='/' element={<Home />} />
             <Route path='/register' element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path='/newproduct' element={<NewProduct />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/order" element={<Payment />} />
+            <Route path="/products" element={<FiltersProvider><Products /></FiltersProvider>} />
           </Routes>
         </CartProvider>
         <Footer></Footer>

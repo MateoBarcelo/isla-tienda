@@ -5,7 +5,7 @@ const initialState = []
 
 export function useCartReducer() {
     
-    const [state, dispatch] = useReducer(cartReducer, initialState)
+    const [state, dispatch] = useReducer(cartReducer, JSON.parse(sessionStorage.getItem("cart")) || initialState)
     //const [cart, setCart] = useState([])
 
     const addToCart = (product) => dispatch({
@@ -24,7 +24,7 @@ export function useCartReducer() {
     })
 
     return ({
-        cart: state,
+        cart: JSON.parse(sessionStorage.getItem("cart")) || state,
         addToCart,
         removeFromCart,
         clearCart

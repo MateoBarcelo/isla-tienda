@@ -1,5 +1,8 @@
+import { useAuth } from "../context/auth";
+
 const initialState = []
 
+let newState;
 export const cartReducer = (state, action) => {
     const {type, payload} = action
     const id = payload?.id
@@ -8,40 +11,45 @@ export const cartReducer = (state, action) => {
             const productInCart = state.findIndex(item => item.id === id)
 
             if(productInCart >= 0) {
-                const newCart = structuredClone(state) //deep copy of array
-                newCart[productInCart].quantity += 1
-                
-                return newCart
-                
+                newState = structuredClone(state) //deep copy of array
+                newState[productInCart].quantity += 1
+               
+            } else {
+                newState = [
+                    ...state,
+                    {
+                        ...payload,
+                        quantity: 1
+                    }
+                ]
             }
-    
-            return [
-                ...state,
-                {
-                    ...payload,
-                    quantity: 1
-                }
-            ]
+            break;
         }
 
         case 'REMOVE_FROM_CART': {
             const productInCart = state.findIndex(item => item.id === id)
             const { quantity } = payload
             if(quantity > 1) {
-                const newCart = structuredClone(state) //deep copy of array
-                newCart[productInCart].quantity -= 1
+                newState = structuredClone(state) //deep copy of array
+                newState[productInCart].quantity -= 1
+                console.log(newState)
                 
-                return newCart
-                
+            } else {
+                newState = state.filter(item => item.id !== id)
+                console.log(newState)
             }
 
-            return state.filter(item => item.id !== id)
+            break;
         }
 
         case 'CLEAR_CART': {
-            return initialState
+            newState = initialState
+            break;
         }
+        
     }
 
-    return state
+    sessionStorage.setItem('cart', JSON.stringify(newState))
+
+    return newState
 }

@@ -12,6 +12,7 @@ export function useProducts() {
       try {
         const products = await productService.getProducts()
         setProducts(products)
+        setLoading(false)
       } catch (error) {
         setError(error)
       }
