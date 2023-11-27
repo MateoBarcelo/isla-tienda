@@ -1,11 +1,13 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import { jwtDecode } from 'jwt-decode'
+import { useCartReducer } from '../hooks/useCartReducer'
 
 const AuthContext = createContext()
 
 export const AuthProvider = ({children}) => {
     const [accessToken, setAccessToken] = useState(sessionStorage.getItem("accessToken") || '')
     const [user, setUser] = useState(sessionStorage.getItem("user") || '')
+    const {clearCart} = useCartReducer()
 
     const clearToken = () => {
         localStorage.removeItem("accessToken")
@@ -39,6 +41,7 @@ export const AuthProvider = ({children}) => {
 
     const signout = () => {
         setAccessToken('')
+        clearCart()
     }
 
     const validToken = () => {

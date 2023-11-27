@@ -38,21 +38,21 @@ export function Header() {
 
     
     return(
-        <header className='w-full h-[70px] md:h-[90px] bg-mint-50 px-28 flex justify-between items-center'>
+        <header className='w-full shadow-[rgba(13,_38,_76,_0.19)_0px_5px_20px] relative h-[70px] md:h-[90px] bg-mint-50 px-28 flex justify-between items-center'>
             <img src='logo.png' alt='Logo Isla' className='w-[165px]'/>
             <ul className='hidden md:flex space-x-14 text-mint-900 font-sans font-bold items-center'>
-                <li>
+                <li class="relative hover:text-mint-700 transition-colors duration-300 w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-mint-700 cursor-pointer after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
                     <Link to='/'>
-                    Inicio
+                        Inicio
                     </Link>
                 </li>
-                <li>
+                <li class="relative hover:text-mint-700 transition-colors duration-300 w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-mint-700 cursor-pointer after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
                     Productos
                 </li>
-                <li>
+                <li class="relative hover:text-mint-700 transition-colors duration-300 w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-mint-700 cursor-pointer after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
                     Nosotros
                 </li>
-                <li>
+                <li class="relative hover:text-mint-700 transition-colors duration-300 w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-mint-700 cursor-pointer after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
                     Contacto
                 </li>
                 {accessToken ? (                
