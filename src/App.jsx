@@ -18,6 +18,7 @@ import ProductSlider from './components/ProductSlider'
 import Button from './components/Button'
 import { Products } from './components/Pages/Products'
 import { Payment } from './components/Pages/Payment'
+import { OrderDashboard } from './components/Pages/OrderDashboard'
 
 function App() {
 
@@ -28,7 +29,7 @@ function App() {
       <>
         <Banner/>
         <ItemSection />
-        <section className='flex flex-col text-center md:flex-row md:text-left justify-between items-center md:px-32 p-12'>
+        <section className='flex flex-col text-center md:flex-row md:text-left justify-between items-center md:px-16 lg:px-32 p-12'>
             <div>
                 <h1 className='md:text-3xl text-4xl text-mint-900 font-semibold'>Nuestros productos</h1>
                 <p className='text-lg text-mint-900'>Encontrá calidad al mejor precio</p>
@@ -57,6 +58,7 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/order" element={<Payment />} />
             <Route path="/products" element={<FiltersProvider><Products /></FiltersProvider>} />
+            <Route path="/orderdashboard" element={<OrderDashboard />} />
           </Routes>
         </CartProvider>
         <Footer></Footer>

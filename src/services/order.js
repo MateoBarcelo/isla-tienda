@@ -15,7 +15,27 @@ const createOrder = async (order, token) => {
     return response.data;
 }
 
-export default createOrder;
+const updateOrder = async (order, token) => {
+    const response = await axios.put(url + `/${order.id}`, order, config(token));
+    return response.data;
+}
+
+const getOrders = async (token) => {
+    const response = await axios.get(url, config(token));
+    return response.data;
+}
+
+const deleteOrder = async (order, token) => {
+    const response = await axios.delete(url + `/${order.id}`, config(token));
+    return response.data;
+}
+
+const getMaxOrder = async () => {
+    const response = await axios.get(url + '/maxorder');
+    return response.data;
+}
+
+export default {createOrder, getOrders, updateOrder, getMaxOrder, deleteOrder};
 
 
 

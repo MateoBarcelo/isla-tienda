@@ -14,7 +14,7 @@ function Footer() {
       <footer className="bg-mint-700 mt-12">
         <div className="container mx-auto md:px-24 md:py-10 py-6">
           {/* footer div all */}
-          <div className="flex justify-between flex-col md:flex-row  items-center md:items-start md:gap-[5rem] md:text-left text-center">
+          <div className="flex justify-between flex-col md:flex-row items-center md:items-start md:gap-[5rem] md:text-left text-center">
             {/* logo side */}
             <div className="flex flex-col w-1/2 md:p-0 py-4 gap-8">
               <img
