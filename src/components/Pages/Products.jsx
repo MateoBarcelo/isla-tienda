@@ -9,7 +9,7 @@ export function Products() {
 
     return (
         <main>
-            <section className='flex flex-col text-center md:flex-row md:text-left justify-between items-center md:px-32 p-12'>
+            <section className='flex flex-col text-center md:flex-row md:text-left justify-between items-center md:px-32 p-12' data-aos="fade-right" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
                 <div>
                     <h1 className='md:text-3xl text-4xl text-mint-900 font-semibold'>Nuestros productos</h1>
                     <p className='text-lg text-mint-900'>Encontrá calidad al mejor precio</p>

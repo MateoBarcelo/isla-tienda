@@ -1,6 +1,6 @@
 import { useCart } from "../../hooks/useCart";
 import Button from "../Button";
-import createOrder from "../../services/order";
+import orderService from "../../services/order";
 import { useAuth } from "../../context/auth";
 import product from "../../services/product";
 
@@ -14,7 +14,9 @@ export function TransferPay() {
         return `${product.title} x ${product.quantity}`
     }).join(", ")
 
-    const handleOrder = (e) => {
+    const handleOrder = async (e) => {
+        
+        const orderNumber = await orderService.getMaxOrder()
         const orderDetails = {
             products: cart.map(product => {
                 return {
@@ -23,9 +25,11 @@ export function TransferPay() {
                     quantity: product.quantity
                 }
             }),
-            total
+            total,
+            type: "Transferencia",
+            number: Number(orderNumber) + 1
         }
-        createOrder(orderDetails, accessToken)
+        orderService.createOrder(orderDetails, accessToken)
         .then((res) => {
             if(res.status === 201) {
                 window.location.href = "/order"

@@ -2,13 +2,13 @@ import { CardPayment, initMercadoPago } from "@mercadopago/sdk-react";
 import createPayment from "../../services/payment";
 import bcrypt from "bcryptjs-react"
 
-export function CardPay({price}) {
+export function CardPay({price }) {
     const refCode = sessionStorage.getItem("referralCode")
     const decryptedRefCode = bcrypt.compareSync(import.meta.env.VITE_REFERRAL_CODE, String(refCode))
     if(!decryptedRefCode) window.location.href = "/"
     sessionStorage.removeItem("referralCode")
 
-    initMercadoPago('APP_USR-e3900976-08a0-4bce-a797-ceaba5cf7421');
+    initMercadoPago('APP_USR-cd45ad62-babd-4baa-8761-ae9e68799548');
     
     const onSubmit = async (formData) => {
         const accessToken = sessionStorage.getItem("accessToken")

@@ -61,8 +61,26 @@ export const AuthProvider = ({children}) => {
         return true
     }
 
+    const isAdmin = async () => {
+        if(!accessToken) return false
+
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/isAdmin`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken,
+                }
+            })
+            if(!response.ok) return false
+        } catch(error) {
+            return false
+        }
+
+        return true
+    }
+
     return(
-        <AuthContext.Provider value={{accessToken, validToken, user, signin, signout}}>
+        <AuthContext.Provider value={{accessToken, validToken, isAdmin, user, signin, signout}}>
             {children}
         </AuthContext.Provider>)
 }
