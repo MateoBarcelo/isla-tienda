@@ -5,7 +5,7 @@ import { useAuth } from "../../context/auth";
 import product from "../../services/product";
 
 
-export function TransferPay() {
+export function TransferPay({sendMethod}) {
 
     const {accessToken} = useAuth()
     const {cart, total} = useCart()
@@ -27,7 +27,8 @@ export function TransferPay() {
             }),
             total,
             type: "Transferencia",
-            number: Number(orderNumber) + 1
+            number: Number(orderNumber) + 1,
+            send: sendMethod
         }
         orderService.createOrder(orderDetails, accessToken)
         .then((res) => {

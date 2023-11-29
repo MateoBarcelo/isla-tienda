@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import { jwtDecode } from 'jwt-decode'
 import { useCartReducer } from '../hooks/useCartReducer'
+import userService from '../services/user'
 
 const AuthContext = createContext()
 
@@ -62,25 +63,21 @@ export const AuthProvider = ({children}) => {
     }
 
     const isAdmin = async () => {
-        if(!accessToken) return false
+        if (!accessToken) return false;
 
-        try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/isAdmin`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': 'Bearer ' + accessToken,
-                }
-            })
-            if(!response.ok) return false
-        } catch(error) {
-            return false
-        }
+        const fetchUser = await userService.getUserByEmail(user);
 
-        return true
-    }
+    };
+
+    const getID = async (email) => {
+        if (!accessToken) return null;
+
+        const fetchUser = await userService.getUserByEmail(email, accessToken);
+        return fetchUser.id || null;
+    };
 
     return(
-        <AuthContext.Provider value={{accessToken, validToken, isAdmin, user, signin, signout}}>
+        <AuthContext.Provider value={{accessToken, validToken, isAdmin, getID, user, signin, signout}}>
             {children}
         </AuthContext.Provider>)
 }

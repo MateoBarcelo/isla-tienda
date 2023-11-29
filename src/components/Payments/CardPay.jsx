@@ -1,18 +1,21 @@
 import { CardPayment, initMercadoPago } from "@mercadopago/sdk-react";
 import createPayment from "../../services/payment";
 import bcrypt from "bcryptjs-react"
+import orderService from "../../services/order";
 
-export function CardPay({price }) {
+export function CardPay({price, sendMethod }) {
     const refCode = sessionStorage.getItem("referralCode")
     const decryptedRefCode = bcrypt.compareSync(import.meta.env.VITE_REFERRAL_CODE, String(refCode))
     if(!decryptedRefCode) window.location.href = "/"
     sessionStorage.removeItem("referralCode")
 
-    initMercadoPago('APP_USR-cd45ad62-babd-4baa-8761-ae9e68799548');
+    initMercadoPago(import.meta.env.VITE_MP_PUBLIC_KEY);
     
     const onSubmit = async (formData) => {
         const accessToken = sessionStorage.getItem("accessToken")
         const cart = JSON.parse(sessionStorage.getItem("cart"))
+
+        const orderNumber = await orderService.getMaxOrder()
         
         formData.products = cart.map((product) => {
             return {
@@ -21,6 +24,9 @@ export function CardPay({price }) {
                 quantity: product.quantity
             };
         });
+
+        formData.send = sendMethod
+        formData.number = Number(orderNumber) + 1
     
         const paymentCreated = await createPayment(JSON.stringify(formData), accessToken);
         if(paymentCreated) {

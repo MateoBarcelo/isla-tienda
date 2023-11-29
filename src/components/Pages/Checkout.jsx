@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useCart } from "../../hooks/useCart";
+import { useAuth } from "../../context/auth";
+import userService from "../../services/user";
 import Button from "../Button";
 import bcrypt from "bcryptjs-react"
 
@@ -9,20 +11,35 @@ let envio = 2000
 export function Checkout(props) {
 
     const {cart, total} = useCart()
+    const {getID, user, accessToken} = useAuth()
+
+    const [address, setAddress] = useState("")
+    const [phone, setPhone] = useState("")
+
     const [payMethod, setPayMethod] = useState("card")
     const [sendMethod, setSendMethod] = useState("flete")
     const [buttonDisabled, setButtonDisabled] = useState(false)
     const [payDisabled, setPayDisabled] = useState(true)
 
-    const handlePayRedirection = () => {
+    const handlePayRedirection = async () => {
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(import.meta.env.VITE_REFERRAL_CODE, salt)
         sessionStorage.setItem("referralCode", hash)
 
+        const userID = await getID(user)
+
+        const updatedUser = {
+            ...user,
+            address,
+            phone
+        }
+
+        await userService.updateUser(userID, updatedUser, accessToken)
+
         if(payMethod === "card") {
-            window.location.href = `/order?type=card`
+            window.location.href = `/order?type=card&send=${sendMethod}`
         } else {
-            window.location.href = `/order?type=transfer`
+            window.location.href = `/order?type=transfer&send=${sendMethod}`
         }
     }
 
@@ -38,12 +55,13 @@ export function Checkout(props) {
     }
 
     const handleSendMethod = (e) => {
+        e.preventDefault()
         if(e.target.name === "local") {
             setSendMethod(SEND_METHODS[0])
             envio = 0
         } else {
             setSendMethod(SEND_METHODS[1])
-            envio = 2000
+            envio = import.meta.env.VITE_SENT_PRICE
         }
         setButtonDisabled(!buttonDisabled)
     }
@@ -55,8 +73,8 @@ export function Checkout(props) {
             <div className="grid [place-items:start_center] [grid-template-columns:1fr] lg:[grid-template-columns:1.3fr_1.7fr_1.3fr] px-16 md:px-28 py-4 gap-4 w-full h-full">
                 <div className="w-[100%]">
                     <p className="text-2xl text-mint-900 font-semibold pb-4 text-center">1. Revisá tu carrito</p>
-                    <div className="flex flex-col justify-center items-start space-y-2 rounded-xl">
-                        {cart.map(product => (       
+                    <div className="flex flex-col justify-center items-center space-y-2 rounded-xl">
+                        {cart.length > 0 ? cart.map(product => (       
                             <li key={product.id} className="flex items-center w-full text-left shadow-md rounded-lg bg-mint-25 text-mint-900 p-4">
                                 <img src={product.thumbnail} alt={product.title} className="rounded-md w-1/2 h-1/2 aspect-square block object-cover bg-white" />                            
                                 <div className="flex flex-col px-2 space-y-2">
@@ -67,19 +85,19 @@ export function Checkout(props) {
                                     
                                 </div>
                             </li>
-                        ))}
+                        )) : <p className="text-lg text-mint-900 pb-4 text-center">No hay productos en el carrito!</p>}
                     </div>
                 </div>
                 <div className="w-full">
                 <p className="text-2xl text-mint-900 font-semibold pb-4 text-center">2. Rellená los campos</p>
-                <div className="bg-mint-25 rounded-xl shadow-md flex flex-col py-6 px-10 justify-center items-start space-y-4">
+                <form className="bg-mint-25 rounded-xl shadow-md flex flex-col py-6 px-10 justify-center items-start space-y-4">
                     <div className="w-full space-y-2">
                         <label className="text-mint-900 text-lg font-semibold">Direccion</label>
-                        <input type="text" className="w-full border border-mint-900 border-opacity-60 bg-transparent rounded-md p-2" />
+                        <input type="text" onChange={(e) => setAddress(e.target.value)} value={address} className="w-full border border-mint-900 border-opacity-60 bg-transparent rounded-md p-2" />
                     </div>
                     <div className="w-full space-y-2">
                         <label className="text-mint-900 text-lg font-semibold">Teléfono</label>
-                        <input type="text" className="w-full border border-mint-900 border-opacity-60 bg-transparent rounded-md p-2" />
+                        <input type="text" onChange={(e) => setPhone(e.target.value)} value={phone} className="w-full border border-mint-900 border-opacity-60 bg-transparent rounded-md p-2" />
                     </div>
                     <div className="w-full space-y-2">
                         <label className="text-mint-900 text-lg font-semibold">Notas</label>
@@ -92,7 +110,7 @@ export function Checkout(props) {
                             <Button onClick={handleSendMethod} name={"flete"} disabled={!buttonDisabled} title={"Envío por flete"} />
                         </div>
                     </div>
-                </div>
+                </form>
                 </div>
                 <div className="w-full">
                     <p className="text-2xl text-mint-900 font-semibold pb-4 text-center">3. Método de pago</p>

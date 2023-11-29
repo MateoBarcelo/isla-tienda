@@ -5,12 +5,10 @@ export function Payment({ price = 50 }) {
 
     const params = new URLSearchParams(window.location.search);
 
-
     return (
-        
         params.get("type") === "card" 
-        ? <CardPay price={price} /> 
-        : <TransferPay />
+        ? <CardPay price={price} sendMethod={params.get("send") || "local"} /> 
+        : <TransferPay sendMethod={params.get("send") || "local"} />
     )
  
 }
