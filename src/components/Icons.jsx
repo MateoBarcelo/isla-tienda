@@ -47,7 +47,7 @@ export function UserIcon() {
   )
 }
 
-export function CartIcon() {
+export function CartIcon({color="#1F443D"}) {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@ export function CartIcon() {
         viewBox="0 0 39 33"
       >
         <path
-          stroke="#1F443D"
+          stroke={color}
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="3"

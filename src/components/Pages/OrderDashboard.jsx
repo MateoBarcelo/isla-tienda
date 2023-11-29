@@ -5,34 +5,43 @@ import useOrders from '../../hooks/useOrders'
 import orderService from '../../services/order'
 import { useAuth } from '../../context/auth'
 import Order from '../Order'
+import { useIsAdmin } from '../../hooks/useIsAdmin'
 
 export function OrderDashboard() {
 
-    const [category, setCategory] = useState('all')
-    const [orderList, setOrders] = useState([])
+    const [category, setCategory] = useState('all');
+    const [orderList, setOrders] = useState([]);
+    const [redirectHome, setRedirectHome] = useState(false);
 
-    const {orders} = useOrders()
-
-    const {accessToken, isAdmin} = useAuth()
-
-    const admin = isAdmin()
-
-    if(admin) {
-        console.log('admin')
-    }
+    const { accessToken, isAdmin } = useAuth();
+    const { orders } = useOrders();
 
     const filterOrders = (orders) => {
-        return orders.filter(order => {
-             return order.state === category || category === 'all'
-        })
-     }
+        return orders.filter((order) => {
+            return order.state === category || category === 'all';
+        });
+    };
 
-     useEffect(() => {
-        setOrders(filterOrders(orders))
-        }, [category, orders])
+    useEffect(() => {
+        setOrders(filterOrders(orders));
+    }, [category, orders]);
 
+    const {admin} = useIsAdmin()
+
+    if (!admin) {
+        return (
+            <div className="grid place-items-center text-mint-900 w-full space-y-4 h-auto p-12">
+                <h1 className='text-xl'>No tienes permiso para ver esta página</h1>
+                <Button onClick={() => window.location.href="/"} title="Volver al inicio" />
+            </div>
+        )
+    }
     const handleDeleted = async (order) => {
-        const confirm = window.confirm('¿Estás seguro que deseas eliminar este producto?')
+        let confirm = false;
+        if(order.state === 'approved') {
+            confirm = true
+        } else confirm = window.confirm('¿Estás seguro que deseas eliminar este producto?')
+        
         if(confirm) {
             await orderService.deleteOrder(order, accessToken)
             setOrders(orderList.filter(o => order.id != o.id))

@@ -65,8 +65,8 @@ export const AuthProvider = ({children}) => {
     const isAdmin = async () => {
         if (!accessToken) return false;
 
-        const fetchUser = await userService.getUserByEmail(user);
-
+        const response = await userService.isAdmin(accessToken);
+        return response.status === 200;
     };
 
     const getID = async (email) => {

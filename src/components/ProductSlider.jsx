@@ -45,7 +45,7 @@ const ProductSlider = ({products}) => {
         <div className="overflow-hidden">
             <div className={`grid grid-cols-2 px-12 md:grid-cols-4 md:px-32 gap-4 relative transition-transform duration-500 ease-in-out transform ${slide ? 'leaveLeft' : 'enterRight'}`}>
                 {products.slice(currentIndex, currentIndex + 4).map((product) => (
-                    <Product product={product} />
+                    <Product key={product.id} product={product} />
                 ))}
             </div>
         </div>
