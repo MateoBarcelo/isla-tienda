@@ -21,4 +21,9 @@ const updateUser = async (id, user, token) => {
     return response.data;
 }
 
-export default {getUserByEmail, updateUser}
+const isAdmin = async (token) => {
+    const response = await axios.get(url + "/isAdmin", config(token));
+    return response;
+}
+
+export default {getUserByEmail, updateUser, isAdmin}

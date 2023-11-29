@@ -4,6 +4,7 @@ import Button from "../Button.jsx"
 import { CategorySelector } from "../CategorySelector.jsx"
 import productService from "../../services/product"
 import { useAuth } from "../../context/auth.jsx"
+import { useIsAdmin } from "../../hooks/useIsAdmin.jsx"
 const ProductForm = ({handleSubmit, onInputChange, formData}) => {
     return(
     <form onSubmit={handleSubmit} className="text-mint-900 mt-14 mb-6 w-80 max-w-screen-lg sm:w-96 h-screen">
@@ -102,7 +103,18 @@ export function NewProduct() {
         measures: "1mt x 1mt x 50cm",
     });
 
-    const { accessToken } = useAuth()
+    const {accessToken} = useAuth()
+
+    const {admin} = useIsAdmin()
+
+    if (!admin) {
+        return (
+            <div className="grid place-items-center text-mint-900 w-full space-y-4 h-auto p-12">
+                <h1 className='text-xl'>No tienes permiso para ver esta página</h1>
+                <Button onClick={() => window.location.href="/"} title="Volver al inicio" />
+            </div>
+        )
+    }
 
     const handleSubmit = async (event) => {
         event.preventDefault()

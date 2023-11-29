@@ -4,11 +4,11 @@ import { useCart } from "../hooks/useCart";
 import { CartItem } from './Cart/CartItem'
 import Button from "./Button";
 import { Link } from "react-router-dom";
-
+import { CartIcon } from "./Icons";
 
 export function Cart() {
 
-    const {cart, removeFromCart, addToCart, clearCart} = useCart()
+    const {cart, removeFromCart, addToCart, clearCart, total} = useCart()
 
     const [cartOpen, setCartOpen] = useState(false);
 
@@ -20,14 +20,22 @@ export function Cart() {
             </label>
             <aside className={`fixed z-50 overflow-y-scroll top-0 left-auto w-full md:w-1/5 right-0 bg-mint-700 h-full text-mint-50 p-10 justify-start peer-checked:flex [box-shadow:_-7px_-2px_19px_-5px_rgba(0,0,0,0.51)] ${cartOpen ? 'transform translate-x-0 opacity-100' : 'transform translate-x-full opacity-0'} transition-all duration-500 [scrollbar-width:none]`}>
                 <div className="flex justify-between">
-                    <button onClick={() => setCartOpen(false)} className="px-2 rounded-lg text-mint-700 shadow-lg bg-mint-300 mr-3">Volver</button>
-                    <button onClick={() => clearCart()} className="px-2 rounded-lg text-mint-700 shadow-lg bg-mint-300 mr-3">Limpiar</button>
+                    <button onClick={() => setCartOpen(false)} className="px-2 rounded-lg text-mint-700 shadow-lg bg-mint-300">Volver</button>
+                    <button onClick={() => clearCart()} className="px-2 rounded-lg text-mint-700 shadow-lg bg-mint-300">Limpiar</button>
                 </div>
                 
-                <div className="w-full flex justify-center items-center pt-8">
+                <div className="w-full flex space-y-4 flex-col justify-center items-center pt-8">
                     <a href='/checkout'>
-                        <Button onClick={() => setCartOpen(false)} title={"Ir a comprar"} />
+                        <button className={`bg-mint-900 hover:bg-mint-700 active:transform active:translate-y-1'} w-1/2 md:w-auto py-2 px-6 rounded-md text-mint-50 font-semibold hover:text-white transition-all`}
+                            onClick={() => setCartOpen(true)}>
+                                <div className="flex space-x-2">
+                                    <p>Ir a comprar</p>
+                                    <CartIcon color="white" />
+                                </div>
+                               
+                        </button>
                     </a>
+                    <p className="text-lg">Total: ${total}</p>
                 </div>
                 <ul className='mt-4'>
                     {cart.map(product => (
