@@ -21,7 +21,9 @@ export function Header() {
         return (
             <div>     
                 <ul className={`flex flex-col justify-center z-50 w-screen h-screen fixed top-0 left-0 bg-mint-900 text-mint-100 text-3xl font-sans font-bold items-center transition-all ${isOpen ? 'transform translate-x-0 opacity-100' : 'transform translate-x-full opacity-0'} transition-all duration-500 opacity-95`}>
-                    <img src='logowhite.png' className='w-[200px] -mt-12 py-10' alt="" />
+                    <Link to="/">
+                        <img src='logowhite.png' className='w-[200px] -mt-12 py-10' alt="Logo Isla" />
+                    </Link>
                     <MenuLinks />
                     <li className='flex space-x-10 p-10'>
                        <CartButton />
@@ -37,7 +39,9 @@ export function Header() {
     
     return(
         <header className='w-full shadow-[rgba(13,_38,_76,_0.19)_0px_5px_20px] relative h-[70px] md:h-[90px] bg-mint-50 px-6 md:px-10 lg:px-28 flex justify-between items-center' data-aos="fade-right" data-aos-easing="ease-out-cubic">
-            <img src='logo.png' alt='Logo Isla' className='w-[165px]'/>
+            <Link to='/'>
+                <img src='logo.png' alt='Logo Isla' className='w-[165px]'/>
+            </Link>
             <ul className='hidden md:flex space-x-14 text-mint-900 font-sans font-bold items-center'>
                 <li class="relative hover:text-mint-700 transition-colors duration-300 w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-mint-700 cursor-pointer after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
                     <Link to='/'>

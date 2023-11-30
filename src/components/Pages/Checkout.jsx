@@ -20,6 +20,18 @@ export function Checkout(props) {
     const [sendMethod, setSendMethod] = useState("flete")
     const [buttonDisabled, setButtonDisabled] = useState(false)
     const [payDisabled, setPayDisabled] = useState(true)
+    const [error, setError] = useState('')
+
+    useEffect(() => {
+        if(address && phone){
+            setError('')
+        } 
+        else {
+            setPayDisabled(true)
+            setError('Completa los campos, Notas es opcional')
+        }
+
+    },[address, phone])
 
     const handlePayRedirection = async () => {
         const salt = bcrypt.genSaltSync(10)
@@ -36,6 +48,10 @@ export function Checkout(props) {
 
         await userService.updateUser(userID, updatedUser, accessToken)
 
+        if(error) {
+            return
+        }
+        
         if(payMethod === "card") {
             window.location.href = `/order?type=card&send=${sendMethod}`
         } else {
@@ -51,6 +67,7 @@ export function Checkout(props) {
                 setPayMethod(PAY_METHODS[1])
             }
         }
+
         setPayDisabled(false)
     }
 
@@ -103,6 +120,9 @@ export function Checkout(props) {
                         <label className="text-mint-900 text-lg font-semibold">Notas</label>
                         <input type="text" className="w-full border border-mint-900 border-opacity-60 bg-transparent rounded-md p-2" />
                     </div>
+                    {error && <div className="w-full space-y-2">
+                        <label className="text-red-500 text-lg font-semibold">{error}</label>
+                    </div>}
                     <div className="w-full space-y-2 py-2">
                         <label className="text-mint-900 text-xl font-semibold">Envío</label>
                         <div className="space-x-8 flex justify-center items-center">

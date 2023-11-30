@@ -1,11 +1,18 @@
+
+import { Link } from 'react-router-dom'
+
 const MenuLinks = () => {
     return (
         <div className='space-y-4 text-center md:text-start md:space-y-0'>
                 <li>
-                    Inicio
+                    <Link to="/">
+                         Inicio
+                    </Link>      
                 </li>
                 <li>
-                    Productos
+                    <Link to="/products">
+                         Productos
+                    </Link> 
                 </li>
                 <li>
                     Nosotros
