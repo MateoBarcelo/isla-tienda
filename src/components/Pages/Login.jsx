@@ -11,6 +11,8 @@ const Login = () => {
   const [buttonDisabled, setButtonDisabled] = React.useState(false)
   const { signin } = useAuth()
 
+  const params = new URLSearchParams(window.location.search)
+
   const handleLoginSubmit = async (formData) => {
     const { email, password, remember } = formData
     
@@ -20,7 +22,7 @@ const Login = () => {
         //we pass the token to the context and the remember for save it on localstorage
         if(user.authToken) {
           signin(user, remember)
-          window.location.href = '/'
+          window.location.href = params.get("ref") ? `/${params.get("ref")}` : '/'
         } else {
           setNoAuth(true)
           setButtonDisabled(false)
@@ -36,7 +38,7 @@ const Login = () => {
       <LoginForm onSubmit={handleLoginSubmit} noAuth={noAuth} disabled={buttonDisabled} />
       <div class={`bg-red-300 text-red-900 rounded-lg ${error ? 'enterUp' : 'hidden'}`} role="alert">
         <div class="flex p-4">
-          Error al iniciar sesión. Intenta de nuevo
+          Error al iniciar sesión. Intenta de nuevo!
           <div class="ms-auto">
             <button type="button" onClick={() => setError(false)} class="inline-flex space-x-2 space-y-1 flex-shrink-0 justify-center items-center h-5 w-5 rounded-lg text-red-800 opacity-50 hover:opacity-100 focus:outline-none focus:opacity-100">
               <span class="sr-only">Cerrar</span>
