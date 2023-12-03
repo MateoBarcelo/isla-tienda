@@ -5,7 +5,7 @@ import userService from "../../services/user";
 import Button from "../Button";
 import bcrypt from "bcryptjs-react"
 
-const PAY_METHODS = ["card", "cash"]
+const PAY_METHODS = ["card", "cash", "transfer"]
 const SEND_METHODS = ["local", "flete"]
 let envio = 2000
 export function Checkout(props) {
@@ -16,7 +16,7 @@ export function Checkout(props) {
     const [address, setAddress] = useState("")
     const [phone, setPhone] = useState("")
 
-    const [payMethod, setPayMethod] = useState("card")
+    const [payMethod, setPayMethod] = useState('')
     const [sendMethod, setSendMethod] = useState("flete")
     const [buttonDisabled, setButtonDisabled] = useState(false)
     const [payDisabled, setPayDisabled] = useState(true)
@@ -25,6 +25,7 @@ export function Checkout(props) {
     useEffect(() => {
         if(address && phone){
             setError('')
+            if(payMethod) setPayDisabled(false)
         } 
         else {
             setPayDisabled(true)
@@ -52,19 +53,14 @@ export function Checkout(props) {
             return
         }
         
-        if(payMethod === "card") {
-            window.location.href = `/order?type=card&send=${sendMethod}`
-        } else {
-            window.location.href = `/order?type=transfer&send=${sendMethod}`
-        }
+        window.location.href = `/order?type=${payMethod}&send=${sendMethod}`
+
     }
 
     const handlePayMethod = (e) => {
         if(e.target.checked) {
-            if(e.target.value === "card") {
-                setPayMethod(PAY_METHODS[0])
-            } else {
-                setPayMethod(PAY_METHODS[1])
+            if(PAY_METHODS.includes(e.target.value)) {
+                setPayMethod(e.target.value)
             }
         }
 
@@ -78,7 +74,7 @@ export function Checkout(props) {
             envio = 0
         } else {
             setSendMethod(SEND_METHODS[1])
-            envio = import.meta.env.VITE_SENT_PRICE
+            envio = Number(import.meta.env.VITE_SENT_PRICE)
         }
         setButtonDisabled(!buttonDisabled)
     }
@@ -147,6 +143,16 @@ export function Checkout(props) {
                                 />            
                             </div>
                             <div className="relative border border-mint-900 border-opacity-60 bg-transparent rounded-md p-2">
+                                <label className="text-mint-900 text-lg font-semibold">Transferencia</label>
+                                <input 
+                                    type="radio" 
+                                    name="payMethod" 
+                                    value="transfer"
+                                    onChange={handlePayMethod}
+                                    className="absolute top-4 appearance-none right-6 cursor-pointer outline-none rounded-full w-4 h-4 bg-transparent border border-mint-900 checked:bg-mint-700 transition-colors" 
+                                />
+                            </div>
+                            <div className="relative border mt-2 border-mint-900 border-opacity-60 bg-transparent rounded-md p-2">
                                 <label className="text-mint-900 text-lg font-semibold">Efectivo</label>
                                 <input 
                                     type="radio" 
@@ -162,7 +168,7 @@ export function Checkout(props) {
                         <hr class="w-full h-[1px] my-4 bg-mint-900 border-0 rounded md:my-10"></hr>
                         <p className="text-right text-xl text-mint-900 pt-4 pb-4 font-semibold">TOTAL: ${envio + total}</p>
                         <div className="grid">
-                        <Button title={"Ir a pagar"} disabled={cart.length == 0 || payDisabled} onClick={handlePayRedirection}/>
+                        <Button title={"Ir a pagar"} className={"-mb-3"} disabled={cart.length == 0 || payDisabled} onClick={handlePayRedirection}/>
                         </div>
                     </div>
                 </div>
