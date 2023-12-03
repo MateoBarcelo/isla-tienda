@@ -19,6 +19,15 @@ const create = async (product, token) => {
   }
 }
 
+const edit = async (id, product, token) => {
+  try {
+    const response = await axios.put(`${baseUrl}/api/products/${id}`, product, config(token))
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
 const uploadImage = async (image, token) => {
   try {
     const response = await axios.post(`${baseUrl}/api/uploads`, image, config(token))
@@ -37,4 +46,13 @@ const getProducts = async () => {
     }
 }
 
-export default { create, uploadImage, getProducts}
+const getProductByID = async (id) => {
+  try {
+      const response = await axios.get(`${baseUrl}/api/products/${id}`)
+      return response.data
+  } catch (error) {
+      throw error
+  }
+}
+
+export default { create, uploadImage, getProducts, getProductByID, edit}

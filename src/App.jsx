@@ -19,6 +19,7 @@ import Button from './components/Button'
 import { Products } from './components/Pages/Products'
 import { Payment } from './components/Pages/Payment'
 import { OrderDashboard } from './components/Pages/OrderDashboard'
+import { EditProduct } from './components/Products/EditProduct'
 
 function App() {
 
@@ -59,6 +60,7 @@ function App() {
             <Route path="/order" element={<Payment />} />
             <Route path="/products" element={<FiltersProvider><Products /></FiltersProvider>} />
             <Route path="/orderdashboard" element={<OrderDashboard />} />
+            <Route path="/editproduct/:id" element={<EditProduct />} />
           </Routes>
         </CartProvider>
         <Footer></Footer>
