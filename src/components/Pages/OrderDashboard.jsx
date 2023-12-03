@@ -11,9 +11,8 @@ export function OrderDashboard() {
 
     const [category, setCategory] = useState('all');
     const [orderList, setOrders] = useState([]);
-    const [redirectHome, setRedirectHome] = useState(false);
 
-    const { accessToken, isAdmin } = useAuth();
+    const { accessToken } = useAuth();
     const { orders } = useOrders();
 
     const filterOrders = (orders) => {

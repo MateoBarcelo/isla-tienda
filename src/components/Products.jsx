@@ -1,10 +1,11 @@
 import { useAuth } from "../context/auth";
 import { useCart } from "../hooks/useCart";
-import { AddToCartIcon, CartIcon } from "./Icons";
-
+import { AddToCartIcon, CartIcon, EditIcon } from "./Icons";
+import { useIsAdmin } from "../hooks/useIsAdmin";
 export function Products({ products }) {
 
     const {cart, removeFromCart, addToCart} = useCart()
+    const {admin} = useIsAdmin()
     const {validToken} = useAuth()
 
     const isProductInCart = (product) => {
@@ -13,7 +14,7 @@ export function Products({ products }) {
 
     const Product = ({product}) => {
         return (
-            <li key={product.id} className="flex flex-col text-left shadow-xl rounded-lg bg-[#F5F7F4] text-mint-900 p-5">
+            <li key={product.id} className="flex flex-col text-left shadow-xl relative rounded-lg bg-[#F5F7F4] text-mint-900 p-5">
                 <div className="relative group">
                     <div className="opacity-0 w-full h-[95%] transition-opacity absolute group-hover:opacity-100 bg-mint-900 bg-opacity-60 rounded-md"></div>
                     <img src={product.thumbnail} alt={product.title} className="rounded-md w-full aspect-square block object-cover bg-white mb-3" />
@@ -33,6 +34,14 @@ export function Products({ products }) {
                         <CartIcon />
                     </button>
                 </span>
+                {admin && 
+                <div className="absolute -top-2 -right-2">
+                    <a href={`/editproduct/${product.id}`}>
+                    <button className={`relative w-[34px] h-[34px] p-1 flex items-center justify-center bg-[#F5F7F4] rounded-lg shadow-md`}>
+                        <EditIcon />
+                    </button>
+                    </a>
+                </div>}
             </li>
         )
     }
