@@ -1,6 +1,6 @@
 import { useAuth } from "../context/auth";
 import { useCart } from "../hooks/useCart";
-import { AddToCartIcon } from "./Icons";
+import { AddToCartIcon, CartIcon } from "./Icons";
 
 export function Products({ products }) {
 
@@ -27,8 +27,11 @@ export function Products({ products }) {
                 <span className="text-2xl font-semibold opacity-90">
                     <p>${product.price}</p>
                 </span>
-                <span>
+                <span className="flex justify-between items-center">
                     <p>{product.measures}</p>
+                    <button onClick={() => validToken() ? addToCart(product) : window.location.href="/login?ref=products"} className={`relative w-[34px] h-[34px] p-1 flex items-center justify-center bg-[#F5F7F4] rounded-lg shadow-md`}>
+                        <CartIcon />
+                    </button>
                 </span>
             </li>
         )

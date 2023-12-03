@@ -6,7 +6,7 @@ import userService from '../services/user'
 const AuthContext = createContext()
 
 export const AuthProvider = ({children}) => {
-    const [accessToken, setAccessToken] = useState(sessionStorage.getItem("accessToken") || '')
+    const [accessToken, setAccessToken] = useState(localStorage.getItem("accessToken") || sessionStorage.getItem("accessToken") || '')
     const [user, setUser] = useState(sessionStorage.getItem("user") || '')
     const {clearCart} = useCartReducer()
 

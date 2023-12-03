@@ -8,7 +8,7 @@ import product from "../../services/product";
 export function TransferPay({sendMethod, price}) {
 
     const {accessToken} = useAuth()
-    const {cart, total} = useCart()
+    const {cart} = useCart()
 
     const cartString = cart.map(product => {
         return `${product.title} x ${product.quantity}`
@@ -25,7 +25,7 @@ export function TransferPay({sendMethod, price}) {
                     quantity: product.quantity
                 }
             }),
-            total,
+            total: price,
             type: "Transferencia",
             number: Number(orderNumber) + 1,
             send: sendMethod
