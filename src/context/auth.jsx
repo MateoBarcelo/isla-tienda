@@ -7,12 +7,8 @@ const AuthContext = createContext()
 
 export const AuthProvider = ({children}) => {
     const [accessToken, setAccessToken] = useState(localStorage.getItem("accessToken") || sessionStorage.getItem("accessToken") || '')
-    const [user, setUser] = useState(sessionStorage.getItem("user") || '')
+    const [user, setUser] = useState(sessionStorage.getItem("user") || localStorage.getItem("user") || '')
     const {clearCart} = useCartReducer()
-
-    const clearToken = () => {
-        localStorage.removeItem("accessToken")
-    }
 
     useEffect(() => {
         if(accessToken && validToken()) {
