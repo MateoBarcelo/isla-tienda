@@ -19,7 +19,7 @@ const Product = ({product}) => {
         </li>
     )
 }
-const SLIDE_INTERVAL = 7000
+const SLIDE_INTERVAL = 5000
 const TRANSITION_DURATION = 300
 const ProductSlider = ({products}) => {
 
@@ -33,7 +33,7 @@ const ProductSlider = ({products}) => {
             setTimeout(() => {
                 setCurrentIndex((prevIndex) => (prevIndex + 4) % products.length);
                 setSlide(false);
-            }, TRANSITION_DURATION); // Transition duration
+            }, TRANSITION_DURATION);
         }, SLIDE_INTERVAL);
 
         
