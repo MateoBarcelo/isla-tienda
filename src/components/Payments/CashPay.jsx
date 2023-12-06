@@ -47,8 +47,7 @@ export function CashPay({sendMethod, price}) {
                         <a target="_blank" href={`https://wa.me/5493424067248?text=${cartToLink}`}>
                             Pedir por WhatsApp
                         </a>
-                    </Button>
-                
+                    </Button>  
             </span>
         </div>
     )
