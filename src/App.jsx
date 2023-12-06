@@ -1,10 +1,8 @@
 
 import './App.css'
-import Filters from './components/Filters'
 import { Header } from './components/Header/Header'
 import { Banner } from './components/Banner'
 import { ItemSection } from './components/ItemSection'
-import { useFilters } from './hooks/useFilters'
 import { CartProvider } from './context/cart'
 import Footer from './components/Footer'
 import { Register } from './components/Pages/Register'
@@ -15,11 +13,11 @@ import { FiltersProvider } from './context/filters'
 import { useProducts } from './hooks/useProducts'
 import { Checkout } from './components/Pages/Checkout'
 import ProductSlider from './components/ProductSlider'
-import Button from './components/Button'
 import { Products } from './components/Pages/Products'
 import { Payment } from './components/Pages/Payment'
 import { OrderDashboard } from './components/Pages/OrderDashboard'
 import { EditProduct } from './components/Products/EditProduct'
+import { About } from './components/Pages/About'
 
 function App() {
 
@@ -61,6 +59,7 @@ function App() {
             <Route path="/products" element={<FiltersProvider><Products /></FiltersProvider>} />
             <Route path="/orderdashboard" element={<OrderDashboard />} />
             <Route path="/editproduct/:id" element={<EditProduct />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </CartProvider>
         <Footer></Footer>

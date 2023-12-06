@@ -106,7 +106,7 @@ export function Checkout(props) {
                 <form className="bg-mint-25 rounded-xl shadow-md flex flex-col py-6 px-10 justify-center items-start space-y-4">
                     <div className="w-full space-y-2">
                         <label className="text-mint-900 text-lg font-semibold">Direccion</label>
-                        <input type="text" onChange={(e) => setAddress(e.target.value)} value={address} className="w-full border border-mint-900 border-opacity-60 bg-transparent rounded-md p-2" />
+                        <input type="text" maxLength={30} onChange={(e) => setAddress(e.target.value)} value={address} className="w-full border border-mint-900 border-opacity-60 bg-transparent rounded-md p-2" />
                     </div>
                     <div className="w-full space-y-2">
                         <label className="text-mint-900 text-lg font-semibold">Teléfono</label>
@@ -122,9 +122,13 @@ export function Checkout(props) {
                     <div className="w-full space-y-2 py-2">
                         <label className="text-mint-900 text-xl font-semibold">Envío</label>
                         <div className="space-x-8 flex justify-center items-center">
-                            <Button onClick={handleSendMethod} name={"local"} disabled={buttonDisabled} title={"Retiro en local"} />
-                            <Button onClick={handleSendMethod} name={"flete"} disabled={!buttonDisabled} title={"Envío por flete"} />
+                                <Button onClick={handleSendMethod} name={"local"} disabled={buttonDisabled} title={"Retiro en local"} />     
+                                <Button onClick={handleSendMethod} name={"flete"} disabled={!buttonDisabled} title={"Envío por flete"} />
                         </div>
+                    </div>
+                    <div className="flex justify-center w-full">
+                        {sendMethod === "local" && <p className="text-mint-900">En: Moreno 3058</p>}
+                        {sendMethod === "flete" && <p className="text-mint-900">Envío a: {address}</p>}
                     </div>
                 </form>
                 </div>
