@@ -15,10 +15,14 @@ const MenuLinks = () => {
                     </Link> 
                 </li>
                 <li>
-                    Nosotros
+                    <Link to="/about">
+                        Nosotros
+                    </Link>
                 </li>
                 <li>
-                    Contacto
+                    <Link to="/about/#contact">
+                        Contacto
+                    </Link>
                 </li>
         </div>
     )

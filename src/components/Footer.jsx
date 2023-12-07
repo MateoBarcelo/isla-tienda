@@ -1,13 +1,12 @@
 import { FaFacebookF } from "react-icons/fa";
-import { AiOutlineTwitter, AiFillYoutube } from "react-icons/ai";
-import { BiLogoPinterestAlt } from "react-icons/bi";
+import { GrInstagram } from "react-icons/gr";
+import { IoLogoWhatsapp } from "react-icons/io";
 
 function Footer() {
   const iconsTab = [
-    { icon: <FaFacebookF /> },
-    { icon: <AiOutlineTwitter /> },
-    { icon: <AiFillYoutube /> },
-    { icon: <BiLogoPinterestAlt /> },
+    { icon: <FaFacebookF />, ref: "https://www.facebook.com/indumentariadeportivaytiempolibre" },
+    { icon: <GrInstagram />, ref: "https://www.instagram.com/isla.maderas/" },
+    { icon: <IoLogoWhatsapp />, ref: "https://wa.me/5493424067248" },
   ];
   return (
     <>
@@ -28,13 +27,15 @@ function Footer() {
               </p>
               {/* socials */}
               <div className="flex gap-7 text-[18px] text-mint-100 justify-center md:justify-start">
-                {iconsTab.map(({ icon }, index) => {
+                {iconsTab.map((icon, index) => {
                   return (
                     <div
                       key={index}
                       className="text-2xl bg-mint-100 p-2 rounded-full text-mint-700 hover:bg-mint-900 hover:text-mint-100 transition-colors"
                     >
-                      {icon}
+                      <a href={icon.ref} target="_blank">
+                        {icon.icon}
+                      </a>
                     </div>
                   );
                 })}
