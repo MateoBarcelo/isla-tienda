@@ -59,9 +59,9 @@ export function Header() {
                     </Link>     
                 </li>
                 <li class="relative hover:text-mint-700 transition-colors duration-300 w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-mint-700 cursor-pointer after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
-                        <a href="/about/#contact">
-                        Contacto
-                        </a>
+                    <a href="/about/#contact">
+                    Contacto
+                    </a>
                 </li>
                 {accessToken ? (                
                     <div className='flex space-x-10'>
