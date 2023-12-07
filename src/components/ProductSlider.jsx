@@ -36,8 +36,6 @@ const ProductSlider = ({products}) => {
             }, TRANSITION_DURATION);
         }, SLIDE_INTERVAL);
 
-        
-
         return () => {clearInterval(interval);};
     }, [products]);
 
