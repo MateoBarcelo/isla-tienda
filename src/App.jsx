@@ -26,7 +26,7 @@ function App() {
     const {products} = useProducts()
     return (
       <>
-        <Banner/>
+        <Banner />
         <ItemSection />
         <section className='flex flex-col text-center md:flex-row md:text-left justify-between items-center md:px-16 lg:px-32 p-12'>
             <div>
