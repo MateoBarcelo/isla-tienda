@@ -80,21 +80,22 @@ export function Checkout(props) {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="w-full flex flex-col items-center justify-center">
             <p className="text-3xl pt-12 text-mint-900 font-bold">Completá tu compra</p>
             <hr class="w-48 h-[2px] mx-auto my-4 bg-mint-900 border-0 rounded md:my-10"></hr>
-            <div className="grid [place-items:start_center] [grid-template-columns:1fr] lg:[grid-template-columns:1.3fr_1.7fr_1.3fr] px-16 md:px-28 py-4 gap-4 w-full h-full">
-                <div className="w-[100%]">
+            <div className="grid content-center md:[place-items:start_center] grid-cols-1 lg:[grid-template-columns:1.3fr_1.7fr_1.3fr] px-10 md:px-28 py-4 gap-4 w-full h-full">
+                <div className="w-full">
                     <p className="text-2xl text-mint-900 font-semibold pb-4 text-center">1. Revisá tu carrito</p>
                     <div className="flex flex-col justify-center items-center space-y-2 rounded-xl">
                         {cart.length > 0 ? cart.map(product => (       
                             <li key={product.id} className="flex items-center w-full text-left shadow-md rounded-lg bg-mint-25 text-mint-900 p-4">
                                 <img src={product.thumbnail} alt={product.title} className="rounded-md w-1/2 h-1/2 aspect-square block object-cover bg-white" />                            
-                                <div className="flex flex-col px-2 space-y-2">
-                                    <h3 className="text-xl font-medium">{product.title}</h3>
+                                <div className="flex flex-col px-2 py-2">
+                                    <h3 className="text-lg md:text-xl font-medium">{product.title}</h3>
                                     
-                                    <p className="text-2xl font-semibold opacity-90">${product.price}</p>
-                                    <p className="text-lg">{product.measures}</p>
+                                    <p className="text-xl md:text-2xl font-semibold opacity-90">${product.price}</p>
+                                    <p className="text-sm md:text-lg">{product.measures}</p>
+                                    <p className="text-sm md:text-lg">Cant.: {product.quantity}</p>
                                     
                                 </div>
                             </li>
