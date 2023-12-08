@@ -8,13 +8,13 @@ const Product = ({product}) => {
                 <img src={product.thumbnail} alt={product.title} className="rounded-md w-full aspect-square block object-cover bg-white mb-3" />
                 </div>
             <div>
-                <h3 className="text-lg md:text-xl font-medium">{product.title}</h3>
+                <h3 className="text-sm md:text-xl font-medium">{product.title}</h3>
             </div>
-            <span className="text-xl md:text-2xl font-semibold opacity-90">
+            <span className="text-lg md:text-2xl font-semibold opacity-90">
                 <p>${product.price}</p>
             </span>
             <span>
-                <p className='text-sm md:text-lg'>{product.measures}</p>
+                <p className='text-xs md:text-lg'>{product.measures}</p>
             </span>
         </li>
     )
