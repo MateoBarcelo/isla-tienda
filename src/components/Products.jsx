@@ -55,7 +55,7 @@ export function Products({ products }) {
 
     return (
         <section className="w-full px-24 md:px-32">
-            <ul className="grid grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] gap-3">
+            <ul className="grid grid-cols-1 md:grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] gap-3">
                 {products.map((product) => (
                     <Product key={product.id} product={product} />))}
             </ul>

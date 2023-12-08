@@ -15,7 +15,7 @@ function Footer() {
           {/* footer div all */}
           <div className="flex justify-between flex-col md:flex-row items-center md:items-start md:gap-[5rem] md:text-left text-center">
             {/* logo side */}
-            <div className="flex flex-col w-1/2 md:p-0 py-4 gap-8">
+            <div className="flex flex-col items-center md:items-start justify-center w-2/3 md:w-1/2 md:p-0 py-4 gap-8">
               <img
                 src="/logowhite.png"
                 alt="footer_logo"
