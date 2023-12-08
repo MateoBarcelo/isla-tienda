@@ -3,18 +3,18 @@ import { useProducts } from '../hooks/useProducts';
 
 const Product = ({product}) => {
     return (
-        <li key={product.id} className="flex flex-col text-left shadow-xl rounded-lg bg-[#F5F7F4] text-mint-900 p-5">
+        <li key={product.id} className="flex flex-col text-left shadow-xl rounded-lg bg-[#F5F7F4] text-mint-900 p-3 md:p-5">
             <div className="relative group">
                 <img src={product.thumbnail} alt={product.title} className="rounded-md w-full aspect-square block object-cover bg-white mb-3" />
                 </div>
             <div>
-                <h3 className="text-xl font-medium">{product.title}</h3>
+                <h3 className="text-lg md:text-xl font-medium">{product.title}</h3>
             </div>
-            <span className="text-2xl font-semibold opacity-90">
+            <span className="text-xl md:text-2xl font-semibold opacity-90">
                 <p>${product.price}</p>
             </span>
             <span>
-                <p>{product.measures}</p>
+                <p className='text-sm md:text-lg'>{product.measures}</p>
             </span>
         </li>
     )

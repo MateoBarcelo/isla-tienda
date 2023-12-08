@@ -26,7 +26,7 @@ export function Header() {
                     </Link>
                     <MenuLinks />
                     <li className='flex space-x-10 p-10'>
-                       <CartButton />
+                       <Cart />
                         <button className='w-[34px] h-[34px] p-1 flex items-center justify-center bg-[#F5F7F4] rounded-lg shadow-md text-mint-900 text-2xl' onClick={handleMobileMenu}>
                             ✕
                         </button>

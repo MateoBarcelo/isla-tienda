@@ -14,7 +14,7 @@ export function Products({ products }) {
 
     const Product = ({product}) => {
         return (
-            <li key={product.id} className="flex flex-col text-left shadow-xl relative rounded-lg bg-[#F5F7F4] text-mint-900 p-5">
+            <li key={product.id} className="flex flex-col text-left shadow-xl relative rounded-lg bg-[#F5F7F4] text-mint-900 p-3 md:p-5">
                 <div className="relative group">
                     <div className="opacity-0 w-full h-[95%] transition-opacity absolute group-hover:opacity-100 bg-mint-900 bg-opacity-60 rounded-md"></div>
                     <img src={product.thumbnail} alt={product.title} className="rounded-md w-full aspect-square block object-cover bg-white mb-3" />
@@ -23,13 +23,13 @@ export function Products({ products }) {
                         : <button onClick={() => removeFromCart(product)} className="opacity-0 font-semibold rounded-lg group-hover:opacity-100 transition-opacity shadow-md bg-[#F5F7F4] w-[70%] px-4 py-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">Quitar del carrito</button>}
                     </div>
                 <div>
-                    <h3 className="text-xl font-medium">{product.title}</h3>
+                    <h3 className="text-lg md:text-xl font-medium">{product.title}</h3>
                 </div>
-                <span className="text-2xl font-semibold opacity-90">
+                <span className="text-xl md:text-2xl font-semibold opacity-90">
                     <p>${product.price}</p>
                 </span>
                 <span className="flex justify-between items-center">
-                    <p>{product.measures}</p>
+                    <p className="text-sm md:text-lg">{product.measures}</p>
                     <button onClick={() => validToken() ? addToCart(product) : window.location.href="/login?ref=products"} className={`relative w-[34px] h-[34px] p-1 flex items-center justify-center bg-[#F5F7F4] rounded-lg shadow-md`}>
                     <svg width="44" height="37" viewBox="0 0 44 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14.4 34.9C15.256 34.9 15.95 34.206 15.95 33.35C15.95 32.4939 15.256 31.8 14.4 31.8C13.5439 31.8 12.85 32.4939 12.85 33.35C12.85 34.206 13.5439 34.9 14.4 34.9Z" stroke="#1F443D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
