@@ -95,11 +95,11 @@ export function Checkout(props) {
                                     
                                     <p className="text-xl md:text-2xl font-semibold opacity-90">${product.price}</p>
                                     <p className="text-sm md:text-lg">{product.measures}</p>
-                                    <p className="text-sm md:text-lg">Cant.: {product.quantity}</p>
+                                    <p className="text-sm md:text-lg">Cant.: x{product.quantity}</p>
                                     
                                 </div>
                             </li>
-                        )) : <p className="text-lg text-mint-900 pb-4 text-center">No hay productos en el carrito!</p>}
+                        )) : <p className="text-lg text-mint-900 pb-6 text-center">No hay productos en el carrito!</p>}
                     </div>
                 </div>
                 <div className="w-full">
@@ -123,13 +123,13 @@ export function Checkout(props) {
                     <div className="w-full space-y-2 py-2">
                         <label className="text-mint-900 text-xl font-semibold">Envío</label>
                         <div className="space-x-8 flex justify-center items-center">
-                                <Button onClick={handleSendMethod} name={"local"} disabled={buttonDisabled} title={"Retiro en local"} />     
-                                <Button onClick={handleSendMethod} name={"flete"} disabled={!buttonDisabled} title={"Envío por flete"} />
+                                <Button onClick={handleSendMethod} name={"local"} disabled={buttonDisabled} title={"Retiro local"} />     
+                                <Button onClick={handleSendMethod} name={"flete"} disabled={!buttonDisabled} title={"Envío flete"} />
                         </div>
                     </div>
                     <div className="flex justify-center w-full">
                         {sendMethod === "local" && <p className="text-mint-900">En: Moreno 3058</p>}
-                        {sendMethod === "flete" && <p className="text-mint-900">Envío a: {address}</p>}
+                        {sendMethod === "flete" && <p className="text-mint-900">Envío a: {address || "Tu dirección"}</p>}
                     </div>
                 </form>
                 </div>
