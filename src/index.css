@@ -103,6 +103,9 @@ form.visible-3oS3IS.svelte-cq90g3 {
   align-items: center;
 
 }
+.cart-added {
+  visibility: hidden;
+}
 @keyframes zoomIn {
   0% {
     opacity: 0;
