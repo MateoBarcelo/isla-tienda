@@ -18,6 +18,7 @@ import { Payment } from './components/Pages/Payment'
 import { OrderDashboard } from './components/Pages/OrderDashboard'
 import { EditProduct } from './components/Products/EditProduct'
 import { About } from './components/Pages/About'
+import { Toast } from './components/Toast'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
     return (
       <>
         <Banner />
+        <Toast />
         <ItemSection />
         <section className='flex flex-col text-center md:flex-row md:text-left justify-between items-center md:px-16 lg:px-32 p-12'>
             <div>
