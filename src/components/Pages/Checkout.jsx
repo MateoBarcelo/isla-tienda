@@ -7,7 +7,7 @@ import bcrypt from "bcryptjs-react"
 
 const PAY_METHODS = ["card", "cash", "transfer"]
 const SEND_METHODS = ["local", "flete"]
-let envio = 2000
+let envio = Number(import.meta.env.VITE_SENT_PRICE)
 export function Checkout(props) {
 
     const {cart, total} = useCart()
