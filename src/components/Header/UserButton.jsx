@@ -2,12 +2,18 @@ import { useState } from "react"
 import { UserIcon } from "../Icons"
 import { useAuth } from "../../context/auth"
 import { useIsAdmin } from "../../hooks/useIsAdmin"
+import { useLocation } from "react-router-dom"
 
 const UserButton = () => {
     const [open, setOpen] = useState(false)
     const { user, signout } = useAuth()
-
     const {admin} = useIsAdmin()
+
+    const location = useLocation()
+
+    useEffect(() => {
+        setOpen(false)
+    }, [location])
 
     return(
         <div class="relative inline-block text-left">
