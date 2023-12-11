@@ -68,7 +68,7 @@ export function OrderDashboard() {
     }
 
     return (
-        <div className="flex flex-col w-full h-auto px-24">
+        <div className="flex flex-col w-full h-auto md:px-24">
             <div className="flex flex-col h-full p-6">
                 <div
                     dir="ltr"

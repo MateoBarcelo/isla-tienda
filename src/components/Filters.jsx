@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { FiltersContext } from "../context/filters"
 import { CategorySelector } from "./CategorySelector"
 export default function Filters() {
