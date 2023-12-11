@@ -28,6 +28,15 @@ const edit = async (id, product, token) => {
   }
 }
 
+const deleteProduct = async (id, token) => {
+  try {
+    const response = await axios.delete(`${baseUrl}/api/products/${id}`, config(token))
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
 const uploadImage = async (image, token) => {
   try {
     const response = await axios.post(`${baseUrl}/api/uploads`, image, config(token))
@@ -55,4 +64,4 @@ const getProductByID = async (id) => {
   }
 }
 
-export default { create, uploadImage, getProducts, getProductByID, edit}
+export default { create, uploadImage, getProducts, getProductByID, edit, deleteProduct}

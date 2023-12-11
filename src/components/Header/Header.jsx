@@ -1,11 +1,7 @@
-import Filters from '../Filters.jsx'
-import { CartIcon, UserIcon } from '../Icons.jsx'
-import { useState, useId, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import MenuLinks from './MenuLinks.jsx'
-import CartButton from './CartButton.jsx'
 import { Cart } from '../Cart.jsx'
-import { CartContext } from '../../context/cart.jsx'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../../context/auth.jsx'
 import UserButton from './UserButton.jsx'
 
@@ -17,6 +13,12 @@ export function Header() {
         setIsOpen(!isOpen)
     }
 
+    const location = useLocation()
+
+    useEffect(() => {
+        setIsOpen(false)
+    }, [location])
+
     const renderMobileMenu = () => {
         return (
             <div>     
@@ -25,12 +27,40 @@ export function Header() {
                         <img src='/logowhite.png' className='w-[200px] -mt-12 py-10' alt="Logo Isla" />
                     </Link>
                     <MenuLinks />
-                    <li className='flex space-x-10 p-10'>
-                       <Cart />
-                        <button className='w-[34px] h-[34px] p-1 flex items-center justify-center bg-[#F5F7F4] rounded-lg shadow-md text-mint-900 text-2xl' onClick={handleMobileMenu}>
-                            ✕
-                        </button>
-                    </li>           
+                    {accessToken ? (                
+                    <div className='pt-4 flex space-x-10'>
+                        <li>
+                            <button className={`relative w-[34px] h-[34px] text-xl p-1 flex items-center justify-center bg-[#F5F7F4] text-mint-900 rounded-lg shadow-md`} onClick={handleMobileMenu}>
+                                ✕
+                            </button>
+                        </li>
+                        <li>
+                            <Cart />
+                        </li>
+                        <li>
+                            <button className={`relative w-[34px] h-[34px] p-1 flex items-center justify-center bg-[#F5F7F4] rounded-lg shadow-md`}>
+                                <UserButton />
+                            </button>
+                        </li>       
+                    </div>
+                    ) : (
+                    <div className='flex space-x-4'>
+                        <li>
+                            <Link to='/login'>
+                                <button className='bg-mint-900 text-mint-50 px-3 py-1 text-sm rounded-lg shadow-md transform active:translate-y-1 transition-all'>
+                                    Iniciar sesión
+                                </button>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to='/register'>
+                                <button className='bg-white text-mint-900 px-3 py-1 text-sm rounded-lg shadow-md transform active:translate-y-1 transition-all'>
+                                    Registrarse
+                                </button>
+                            </Link>
+                        </li>
+                    </div>
+                    )}         
                 </ul>
             </div>
         )

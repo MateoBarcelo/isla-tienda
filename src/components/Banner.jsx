@@ -1,7 +1,7 @@
 import Button from './Button'
 import { useState, useEffect } from 'react';
 
-const TRANSITION_DURATION = 200
+const TRANSITION_DURATION = 400
 const SLIDE_INTERVAL = 4000
 const images = [
     'banner.webp',
