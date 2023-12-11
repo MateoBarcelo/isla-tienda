@@ -29,10 +29,10 @@ export function Checkout(props) {
         } 
         else {
             setPayDisabled(true)
-            setError('Completa los campos, Notas es opcional')
+            setError('Completa los campos')
         }
 
-    },[address, phone])
+    },[address, phone, payMethod])
 
     const handlePayRedirection = async () => {
         const salt = bcrypt.genSaltSync(10)
@@ -106,11 +106,11 @@ export function Checkout(props) {
                 <p className="text-2xl text-mint-900 font-semibold pb-4 text-center">2. Rellená los campos</p>
                 <form className="bg-mint-25 rounded-xl shadow-md flex flex-col py-6 px-10 justify-center items-start space-y-4">
                     <div className="w-full space-y-2">
-                        <label className="text-mint-900 text-lg font-semibold">Direccion</label>
+                        <label className="text-mint-900 text-lg font-semibold">Direccion*</label>
                         <input type="text" maxLength={30} onChange={(e) => setAddress(e.target.value)} value={address} className="w-full border border-mint-900 border-opacity-60 bg-transparent rounded-md p-2" />
                     </div>
                     <div className="w-full space-y-2">
-                        <label className="text-mint-900 text-lg font-semibold">Teléfono</label>
+                        <label className="text-mint-900 text-lg font-semibold">Teléfono*</label>
                         <input type="text" onChange={(e) => setPhone(e.target.value)} value={phone} className="w-full border border-mint-900 border-opacity-60 bg-transparent rounded-md p-2" />
                     </div>
                     <div className="w-full space-y-2">
@@ -173,7 +173,7 @@ export function Checkout(props) {
                         <hr class="w-full h-[1px] my-4 bg-mint-900 border-0 rounded md:my-10"></hr>
                         <p className="text-right text-xl text-mint-900 pt-4 pb-4 font-semibold">TOTAL: ${envio + total}</p>
                         <div className="grid">
-                        <Button title={"Ir a pagar"} className={"-mb-3"} disabled={cart.length == 0 || payDisabled} onClick={handlePayRedirection}/>
+                        <Button title={"Ir a pagar"} className={"-mb-3 w-full"} disabled={cart.length == 0 || payDisabled} onClick={handlePayRedirection}/>
                         </div>
                     </div>
                 </div>
