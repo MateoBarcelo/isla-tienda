@@ -98,7 +98,7 @@ export function Products({ products }) {
     const [showToast, setShowToast] = useState(false)
 
     return (
-        <section className="w-full px-24 md:px-32">
+        <section className="w-full px-16 md:px-32">
             <ul className="grid grid-cols-1 md:grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] gap-3">
                 {products.map((product) => (
                     <Product key={product.id} product={product} showToast={showToast} setShow={setShowToast} />))}

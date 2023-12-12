@@ -2,10 +2,11 @@ import { useFilters } from "../../hooks/useFilters"
 import { useProducts } from "../../hooks/useProducts"
 import { Products as ProductList } from "../Products"
 import Filters from "../Filters"
+import { Skeleton } from "../Products/Skeleton"
 export function Products() {
 
     const [filterProducts] = useFilters()
-    const {products} = useProducts()
+    const {products, loading} = useProducts()
 
     return (
         <main>
@@ -16,7 +17,14 @@ export function Products() {
                 </div>
                 <Filters />
             </section>
-            <ProductList products={filterProducts(products)} />
+            {loading ? 
+            <div className="px-16 flex gap-4 md:px-32">
+                <Skeleton />
+                <Skeleton />
+                <Skeleton />
+                <Skeleton />
+            </div>
+            : <ProductList products={filterProducts(products)} />}
         </main>
     )
 } 
