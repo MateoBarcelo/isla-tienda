@@ -21,6 +21,8 @@ export function EditProduct() {
         measures: "1mt x 1mt x 50cm",
     });
 
+    const [added, setAdded] = useState(false)
+
     useEffect(() => {
         const fetchProduct = async () => {
             const product = await productService.getProductByID(id)
@@ -68,6 +70,18 @@ export function EditProduct() {
             
             await productService.edit(id, product, accessToken)
 
+            setFormData({
+                name: "Mueble",
+                category: "",
+                price: "",
+                stock: "",
+                thumbnail: "./logo.png",
+                measures: "1mt x 1mt x 50cm",
+            })
+            setTimeout(() => {
+                setAdded(false)
+            }, 3000)
+
         } catch (error) {
             console.log(error)
         }
@@ -96,6 +110,12 @@ export function EditProduct() {
         <div className="flex flex-col md:flex-row justify-center items-center [&>*]:mx-20">
             <ProductForm handleSubmit={handleSubmit} onInputChange={handleInputChange} formData={formData} />
             <Product product={""} formData={formData}/>   
+            <Toast className={`${added ? 'zoomIn' : 'zoomOut'} `}>
+                    <div className="flex flex-row space-x-2 items-center">
+                        <EditIcon />
+                        <p className="text-lg">Producto editado!</p>
+                    </div>
+            </Toast>
         </div>
     )
 }
