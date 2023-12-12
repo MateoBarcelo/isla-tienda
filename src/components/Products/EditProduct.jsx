@@ -6,6 +6,7 @@ import Product from "./Product.jsx"
 import ProductForm from "./ProductForm.jsx"
 import { useParams } from "react-router-dom"
 import { Toast } from "../Toast.jsx"
+import { EditIcon } from "../Icons.jsx"
 
 export function EditProduct() {
 
