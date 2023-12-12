@@ -41,15 +41,7 @@ export function Header() {
                             <button className={`relative w-[34px] h-[34px] p-1 flex items-center justify-center bg-[#F5F7F4] rounded-lg shadow-md`}>
                                 <UserButton />
                             </button>
-                        </li>
-                        {admin && (
-                            <li>
-                                <Link to='/admin'>
-                                    <button className='bg-mint-900 text-mint-50 px-3 py-1 text-sm rounded-lg shadow-md transform active:translate-y-1 transition-all'>
-                                        P
-                                    </button>
-                                </Link>
-                            </li>)}       
+                        </li>      
                     </div>
                     ) : (
                     <div className='flex space-x-4'>
