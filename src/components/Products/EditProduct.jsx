@@ -5,6 +5,7 @@ import { useAuth } from "../../context/auth.jsx"
 import Product from "./Product.jsx"
 import ProductForm from "./ProductForm.jsx"
 import { useParams } from "react-router-dom"
+import { Toast } from "../Toast.jsx"
 
 export function EditProduct() {
 
