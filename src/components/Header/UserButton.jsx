@@ -23,13 +23,18 @@ const UserButton = () => {
 
             <div className={`absolute right-0 bottom-6 md:bottom-auto z-10 mt-2 w-56 origin-bottom-right md:origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${open ? 'enterIn transition ease-in visible duration-100' : 'transition ease-out duration-75 invisible'}`} role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex="-1">
                 <div className="py-1" role="none">
-                    <a href="#" class="text-mint-900 active:bg-gray-100 hover:bg-gray-50 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Sesión como</a>
-                    <a class="text-mint-900 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">{user}</a>
+                    <a href="#" class="text-mint-900 opacity-80 active:bg-gray-100 hover:bg-gray-50 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Sesión como</a>
+                    <a class="text-mint-900 opacity-80 block px-4 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">{user}</a>
                 </div>
-                {admin && 
-                <div className="py-1" role="none">
-                    <a href="/orderdashboard" className="text-mint-900 active:bg-gray-100 hover:bg-gray-50 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-4">Panel de órdenes</a>
-                </div>}
+                {admin &&
+                    <>
+                    <div className="py-1" role="none">
+                        <a href="/orderdashboard" className="text-mint-900 active:bg-gray-100 hover:bg-gray-50 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-4">Panel de órdenes</a>
+                    </div>
+                    <div className="py-1" role="none">
+                        <a href="/newproduct" className="text-mint-900 active:bg-gray-100 hover:bg-gray-50 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-4">Agregar producto</a>
+                    </div>
+                </> }
                 <div className="py-1" role="none" onClick={signout}>
                     <a href="/" className="text-mint-900 active:bg-gray-100 hover:bg-gray-50 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-6">Salir</a>
                 </div>
