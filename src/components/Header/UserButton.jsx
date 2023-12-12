@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react"
 import { UserIcon } from "../Icons"
 import { useAuth } from "../../context/auth"
-import { useIsAdmin } from "../../hooks/useIsAdmin"
 import { useLocation } from "react-router-dom"
 
 const UserButton = () => {
     const [open, setOpen] = useState(false)
-    const { user, signout } = useAuth()
-    const {admin} = useIsAdmin()
+    const { user, signout, admin } = useAuth()
 
     const location = useLocation()
 

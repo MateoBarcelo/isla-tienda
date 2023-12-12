@@ -8,17 +8,21 @@ const AuthContext = createContext()
 export const AuthProvider = ({children}) => {
     const [accessToken, setAccessToken] = useState(localStorage.getItem("accessToken") || sessionStorage.getItem("accessToken") || '')
     const [user, setUser] = useState(sessionStorage.getItem("user") || localStorage.getItem("user") || '')
+    const [admin, setIsAdmin] = useState(false)
     const {clearCart} = useCartReducer()
 
     useEffect(() => {
         if(accessToken && validToken()) {
             sessionStorage.setItem("accessToken", accessToken)
             sessionStorage.setItem("user", user)
+            isAdmin().then((response) => setIsAdmin(response))
+            
         } else {
             sessionStorage.removeItem("accessToken")
             sessionStorage.removeItem("user")
             localStorage.removeItem("accessToken")
             localStorage.removeItem("user")
+            setIsAdmin(false)
         }
     },[accessToken, user])
 
@@ -60,7 +64,6 @@ export const AuthProvider = ({children}) => {
 
     const isAdmin = async () => {
         if (!accessToken) return false;
-
         const response = await userService.isAdmin(accessToken);
         return response.status === 200;
     };
@@ -73,7 +76,7 @@ export const AuthProvider = ({children}) => {
     };
 
     return(
-        <AuthContext.Provider value={{accessToken, validToken, isAdmin, getID, user, signin, signout}}>
+        <AuthContext.Provider value={{accessToken, validToken, admin, isAdmin, getID, user, signin, signout}}>
             {children}
         </AuthContext.Provider>)
 }

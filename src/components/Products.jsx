@@ -1,7 +1,6 @@
 import { useAuth } from "../context/auth";
 import { useCart } from "../hooks/useCart";
 import { EditIcon } from "./Icons";
-import { useIsAdmin } from "../hooks/useIsAdmin";
 import { useState } from "react";
 import { Toast } from "./Toast";
 import productService from "../services/product";
@@ -9,8 +8,7 @@ import productService from "../services/product";
 const Product = ({product, setShow, showToast}) => {
     
     const {cart, removeFromCart, addToCart} = useCart()
-    const {admin} = useIsAdmin()
-    const {validToken, accessToken} = useAuth()
+    const {validToken, accessToken, admin} = useAuth()
 
     const isProductInCart = (product) => {
         return cart.some(item => item.id === product.id)
