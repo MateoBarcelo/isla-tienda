@@ -18,7 +18,7 @@ export function Products() {
                 <Filters />
             </section>
             {loading ? 
-            <div className="px-16 flex gap-4 md:px-32">
+            <div className="px-16 flex flex-col md:flex-row gap-4 md:px-32">
                 <Skeleton />
                 <Skeleton />
                 <Skeleton />
