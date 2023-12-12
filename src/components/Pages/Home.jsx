@@ -19,7 +19,7 @@ export function Home() {
             </section>
             {loading 
                 ? 
-                <div className='px-16 md:px-32 flex gap-4'>
+                <div className='px-16 md:px-32 flex flex-col md:flex-row gap-4'>
                     <Skeleton />
                     <Skeleton />
                     <Skeleton />
