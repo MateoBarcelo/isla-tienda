@@ -2,7 +2,6 @@ import { useState} from "react"
 import Button from "../Button.jsx"
 import productService from "../../services/product"
 import { useAuth } from "../../context/auth.jsx"
-import { useIsAdmin } from "../../hooks/useIsAdmin.jsx"
 import Product from "./Product.jsx"
 import ProductForm from "./ProductForm.jsx"
 
@@ -18,9 +17,7 @@ export function NewProduct() {
         measures: "1mt x 1mt x 50cm",
     });
 
-    const {accessToken} = useAuth()
-
-    const {admin} = useIsAdmin()
+    const {accessToken, admin} = useAuth()
 
     if (!admin) {
         return (

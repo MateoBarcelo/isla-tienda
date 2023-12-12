@@ -5,14 +5,13 @@ import useOrders from '../../hooks/useOrders'
 import orderService from '../../services/order'
 import { useAuth } from '../../context/auth'
 import Order from '../Order'
-import { useIsAdmin } from '../../hooks/useIsAdmin'
 
 export function OrderDashboard() {
 
     const [category, setCategory] = useState('all');
     const [orderList, setOrders] = useState([]);
 
-    const { accessToken } = useAuth();
+    const { accessToken, admin } = useAuth();
     const { orders } = useOrders();
 
     const filterOrders = (orders) => {
@@ -24,8 +23,6 @@ export function OrderDashboard() {
     useEffect(() => {
         setOrders(filterOrders(orders));
     }, [category, orders]);
-
-    const {admin} = useIsAdmin()
 
     if (!admin) {
         return (
