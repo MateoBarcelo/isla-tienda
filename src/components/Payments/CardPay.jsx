@@ -44,7 +44,7 @@ export function CardPay({price, sendMethod }) {
     };
 
     return (
-        <div className="flex w-full flex-col-reverse justify-center items-center px-16 py-8 md:px-28 h-screen">
+        <div className="flex w-full md:flex-row flex-col-reverse justify-center items-center px-16 py-8 md:px-28 h-screen">
             <span className="flex flex-col w-1/2 justify-center items-center">
                 <p className="text-4xl text-mint-900 font-semibold">Completá tu compra en Isla</p>
                 <p className="text-xl mt-2 text-mint-900 font-medium">Pagá con tarjeta de crédito o débito</p>
