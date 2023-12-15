@@ -5,10 +5,11 @@ import { useState } from "react";
 import { Toast } from "./Toast";
 import productService from "../services/product";
 
-const Product = ({product, setShow, showToast}) => {
+const Product = ({product}) => {
     
     const {cart, removeFromCart, addToCart} = useCart()
     const {validToken, accessToken, admin} = useAuth()
+    const [showToast, setShow] = useState(false)
 
     const isProductInCart = (product) => {
         return cart.some(item => item.id === product.id)
@@ -95,13 +96,11 @@ const Product = ({product, setShow, showToast}) => {
 
 export function Products({ products }) {
 
-    const [showToast, setShowToast] = useState(false)
-
     return (
         <section className="w-full px-16 md:px-32">
             <ul className="grid grid-cols-1 md:grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] gap-3">
                 {products.map((product) => (
-                    <Product key={product.id} product={product} showToast={showToast} setShow={setShowToast} />))}
+                    <Product key={product.id} product={product} />))}
             </ul>
         </section>
     )
