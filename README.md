@@ -11,12 +11,12 @@ Bienvenido/a a Isla Maderas, una aplicación web e-commerce construida con Tailw
 - **Carrito de Compras:** Agregado y gestión de productos en un carrito de compras.
 - **Panel de Órdenes:** Visualización y gestión de órdenes de compra de manera eficiente para administradores.
 - **CRUD de Productos:** Administración sencilla del catálogo de productos con operaciones de Crear, Leer, Actualizar y Eliminar.
-- **Métodos de pago:** Pagá mediante transferencia, efectivo coordinando con los dueños del taller o con tarjeta.
+- **Métodos de pago:** Pagá mediante transferencia, con tarjeta o con efectivo coordinando con los dueños del taller.
 
 ## Capturas de Pantalla ▣
 
 ##
 <div style="display: flex;">
-  <img width=500 src="https://i.imgur.com/5dauMEi.png">
-  <img width=500 src="https://i.imgur.com/tPplgVy.png">
+  <img width=300 src="https://i.imgur.com/5dauMEi.png">
+  <img width=300 src="https://i.imgur.com/tPplgVy.png">
 </div>
