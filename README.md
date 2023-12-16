@@ -17,6 +17,6 @@ Bienvenido/a a Isla Maderas, una aplicación web e-commerce construida con Tailw
 
 ##
 <div style="display: flex;">
-  <img width=300 src="https://i.imgur.com/5dauMEi.png">
-  <img width=300 src="https://i.imgur.com/tPplgVy.png">
+  <img width=400 src="https://i.imgur.com/5dauMEi.png">
+  <img width=400 src="https://i.imgur.com/tPplgVy.png">
 </div>
