@@ -6,7 +6,7 @@ import orderService from "../../services/order";
 
 export function CardPay({price, sendMethod }) {
 
-    const [success, setSuccess] = useState(true)
+    const [success, setSuccess] = useState(false)
     const refCode = sessionStorage.getItem("referralCode")
     const decryptedRefCode = bcrypt.compareSync(import.meta.env.VITE_REFERRAL_CODE, String(refCode))
     /*if(!decryptedRefCode) window.location.href = "/"*/
