@@ -9,7 +9,7 @@ export function CardPay({price, sendMethod }) {
     const [success, setSuccess] = useState(false)
     const refCode = sessionStorage.getItem("referralCode")
     const decryptedRefCode = bcrypt.compareSync(import.meta.env.VITE_REFERRAL_CODE, String(refCode))
-    /*if(!decryptedRefCode) window.location.href = "/"*/
+    if(!decryptedRefCode) window.location.href = "/"
     sessionStorage.removeItem("referralCode")
 
     initMercadoPago(import.meta.env.VITE_MP_PUBLIC_KEY);
@@ -57,9 +57,9 @@ export function CardPay({price, sendMethod }) {
                 </div> 
                 :
                 <>
-                    <span className="flex flex-col w-1/2 justify-center items-center">
-                        <p className="text-4xl text-mint-900 font-semibold">Completá tu compra en Isla</p>
-                        <p className="text-xl mt-2 text-mint-900 font-medium">Pagá con tarjeta de crédito o débito</p>
+                    <span className="flex flex-col md:w-1/2 w-full mt-12 justify-center items-center text-center">
+                        <p className="md:text-4xl text-3xl text-mint-900 font-semibold">Completá tu compra en Isla</p>
+                        <p className="md:text-xl text-lg mt-2 text-mint-900 font-medium">Pagá con tarjeta de crédito o débito</p>
                         <p className="text-lg mt-4 text-mint-900 font-regular">¡Muchas gracias por tu atención!</p>
                     </span>
                     <div className="max-w-xl mt-12 flex justify-center items-center">    
