@@ -76,7 +76,7 @@ const Product = ({product}) => {
             </span>
             {admin && 
             <div className="absolute -top-2 -right-2 flex space-x-2">     
-                <button onClick={() => {productService.deleteProduct(product.id, accessToken); window.location.reload()}} className={`relative w-[34px] h-[34px] p-1 flex items-center justify-center bg-[#F5F7F4] rounded-lg shadow-md`}>
+                <button onClick={() => {productService.deleteProduct(product.id, accessToken).then(() => window.location.reload()) }} className={`relative w-[34px] h-[34px] p-1 flex items-center justify-center bg-[#F5F7F4] rounded-lg shadow-md`}>
                     <svg width="23" height="23" viewBox="0 0 167 167" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M62.3008 62.3007H72.6842V124.601H62.3008V62.3007Z" fill="#1F443D"/>
                         <path d="M93.4509 62.3007H103.834V124.601H93.4509V62.3007Z" fill="#1F443D"/>
