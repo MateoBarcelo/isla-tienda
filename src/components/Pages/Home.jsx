@@ -32,7 +32,7 @@ export function Home() {
               >
                   Ver todos
               </button>
-              <p className='text-mint-900 text-opacity-90 text-center py-10'>Información importante: tu compra tiene una <strong>demora de ~20 días</strong> luego de realizar el pago</p>
+              <p className='text-mint-900 text-opacity-90 text-center py-10'>Información importante: tu compra tiene una <strong>demora de ~15 días</strong> luego de realizar el pago</p>
             </div>
             
           </>
