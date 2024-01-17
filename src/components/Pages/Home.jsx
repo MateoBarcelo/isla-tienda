@@ -27,11 +27,12 @@ export function Home() {
                 </div>
                 :
                 <ProductSlider products={products} />}
-            <div className='flex items-center justify-center py-10'>
+            <div className='flex flex-col items-center justify-center py-10'>
               <button onClick={() => window.location.href="/products"} className={`bg-mint-900 hover:bg-mint-700 active:transform active:translate-y-1 w-1/2 md:w-auto py-2 px-8 text-xl rounded-md text-mint-50 font-semibold hover:text-white transition-all`}
               >
                   Ver todos
               </button>
+              <p className='text-mint-900 text-opacity-90 text-center py-10'>Información importante: tu compra tiene una <strong>demora de ~20 días</strong> luego de realizar el pago</p>
             </div>
             
           </>
