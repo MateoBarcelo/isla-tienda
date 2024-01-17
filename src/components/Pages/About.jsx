@@ -63,7 +63,10 @@ export function About() {
                   ¿Cómo comenzó todo?
                 </h2>
                 <p className="max-w-[900px] text-mint-900 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Antes de crear Isla, hacíamos diversas artesanías tanto en madera como en cerámica. Teníamos un emprendimiento llamado Raíces, en el cual vendíamos macetas pintadas. Luego surgió la idea de hacer relojes en madera, y a partir de eso surgió empezar a hacer muebles, hasta llegar a lo que somos hoy.
+                "Todo inició con productos pequeños como cajoncitos organizadores que además los pintabamos artesanalmente. 
+                Desde una habitación, los pedidos fueron creciendo hasta llegar a ocupar toda la casa nos convertimos de a poco, con mucha dedicación en lo que somos hoy" 
+                <br></br><br></br>En Isla creamos y atendemos cada detalle.
+                Seleccionamos calidad de madera de pino para la elaboración de nuestros productos y brindamos funcionabillidad, precisión en nuestras medidas y buen precio. 
                 </p>
               </div>
             </div>
