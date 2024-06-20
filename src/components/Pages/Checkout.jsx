@@ -20,9 +20,12 @@ export function Checkout(props) {
     const [sendMethod, setSendMethod] = useState("flete")
     const [buttonDisabled, setButtonDisabled] = useState(false)
     const [payDisabled, setPayDisabled] = useState(true)
+    const [firstFetch, setFirstFetch] = useState(false)
     const [error, setError] = useState('')
 
     useEffect(() => {
+        if(!firstFetch) return setError('')
+
         if(address && phone){
             setError('')
             if(payMethod) setPayDisabled(false)
@@ -33,6 +36,10 @@ export function Checkout(props) {
         }
 
     },[address, phone, payMethod])
+
+    useEffect(() => {
+        setFirstFetch(true)
+    },[])
 
     const handlePayRedirection = async () => {
         const salt = bcrypt.genSaltSync(10)
