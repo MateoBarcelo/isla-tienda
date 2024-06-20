@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { UserIcon } from "../Icons"
+import { UserIcon } from "../Icons/Icons"
 import { useAuth } from "../../context/auth"
 import { useLocation } from "react-router-dom"
 
