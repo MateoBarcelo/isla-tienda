@@ -91,7 +91,7 @@ export function NewProduct() {
         <div className="flex flex-col md:flex-row justify-center items-center [&>*]:mx-20">
             <ProductForm handleSubmit={handleSubmit} onInputChange={handleInputChange} formData={formData} />
             <Product product={""} formData={formData}/>
-            <Toast className={`${added ? 'zoomIn' : 'zoomOut'} `}>
+            <Toast className={`${added ? 'zoomIn' : 'hidden'} `}>
                     <div className="flex flex-row space-x-2 items-center">
                         <svg width="28" height="21" viewBox="0 0 44 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.4 34.9C15.256 34.9 15.95 34.206 15.95 33.35C15.95 32.4939 15.256 31.8 14.4 31.8C13.5439 31.8 12.85 32.4939 12.85 33.35C12.85 34.206 13.5439 34.9 14.4 34.9Z" stroke="#1F443D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>

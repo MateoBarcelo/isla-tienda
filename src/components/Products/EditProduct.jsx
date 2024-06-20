@@ -6,7 +6,7 @@ import Product from "./Product.jsx"
 import ProductForm from "./ProductForm.jsx"
 import { useParams } from "react-router-dom"
 import { Toast } from "../Toast.jsx"
-import { EditIcon } from "../Icons.jsx"
+import { EditIcon } from "../Icons/Icons.jsx"
 
 export function EditProduct() {
 
@@ -112,7 +112,7 @@ export function EditProduct() {
         <div className="flex flex-col md:flex-row justify-center items-center [&>*]:mx-20">
             <ProductForm handleSubmit={handleSubmit} onInputChange={handleInputChange} formData={formData} />
             <Product product={""} formData={formData}/>   
-            <Toast className={`${added ? 'zoomIn' : 'zoomOut'} `}>
+            <Toast className={`${added ? 'zoomIn' : 'hidden'} `}>
                     <div className="flex flex-row space-x-2 items-center">
                         <EditIcon />
                         <p className="text-lg">Producto editado!</p>
