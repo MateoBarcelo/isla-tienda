@@ -1,5 +1,5 @@
 import { useCart } from '../../hooks/useCart.jsx'
-import { CartIcon } from '../Icons.jsx'
+import { CartIcon } from '../Icons/Icons.jsx'
 const CartButton = ({ className, onClick }) => {
     const { cart } = useCart()
     return (

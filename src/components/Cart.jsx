@@ -1,10 +1,8 @@
-import { useState, useContext, useEffect } from "react";
-import CartButton from "./Header/CartButton";
+import { useState } from "react";
 import { useCart } from "../hooks/useCart";
-import { CartItem } from './Cart/CartItem'
-import Button from "./Button";
-import { Link } from "react-router-dom";
-import { CartIcon } from "./Icons";
+import { CartItem } from './Cart/CartItem';
+import CartButton from "./Header/CartButton";
+import { CartIcon } from "./Icons/Icons";
 
 export function Cart() {
 
