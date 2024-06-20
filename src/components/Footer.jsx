@@ -83,7 +83,7 @@ function Footer() {
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  href="https://www.radiustheme.com/"
+                  href="https://www.github.com/MateoBarcelo"
                 >
                   Mateo Barceló
                 </a>
