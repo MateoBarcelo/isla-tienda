@@ -36,7 +36,6 @@ export function EditProduct() {
                 thumbnail: product.thumbnail,
                 measures: product.measures,
             })
-            setImage(product.thumbnail)
         }
         fetchProduct()
     }, [])
