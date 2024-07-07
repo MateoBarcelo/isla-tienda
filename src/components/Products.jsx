@@ -59,7 +59,7 @@ const Product = ({product}) => {
                 <h3 className="text-lg md:text-xl font-medium">{product.title}</h3>
             </div>
             <span className="text-xl md:text-2xl font-semibold opacity-90 font-serif">
-                <p>${product.price}</p>
+                <p>${Number(product.price).toLocaleString()}</p>
             </span>
             <span className="flex justify-between items-center">
                 <p className="text-sm md:text-lg">{product.measures}</p>
