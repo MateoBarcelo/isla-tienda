@@ -21,7 +21,8 @@ export default {
     }
     },
     fontFamily: {
-      'sans': ['Raleway', ...defaultTheme.fontFamily.sans]
+      'sans': ['Raleway', ...defaultTheme.fontFamily.sans],
+      'serif': ['Roboto', ...defaultTheme.fontFamily.serif]
     }
   },
   plugins: [],
