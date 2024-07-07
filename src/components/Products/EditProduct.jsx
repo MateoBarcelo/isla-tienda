@@ -13,6 +13,7 @@ export function EditProduct() {
     const {id} = useParams()
 
     const [image, setImage] = useState(null)
+    const [productThumb, setProductThumb] = useState(null)
 
     const [formData, setFormData] = useState({
         name: "Mueble",
@@ -36,6 +37,7 @@ export function EditProduct() {
                 thumbnail: product.thumbnail,
                 measures: product.measures,
             })
+            setProductThumb(product.thumbnail)
         }
         fetchProduct()
     }, [])
@@ -53,8 +55,13 @@ export function EditProduct() {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+
+        const imageBlob = await fetch(productThumb).then((r) => r.blob())
+        const imageForm = image ? image : new File([imageBlob], `thumbnail-${new Date().getTime()}.png`, {type: 'image/png'})
+        
         const formImage = new FormData()
-        formImage.append('file', image)
+        formImage.append('file', imageForm)
+        
 
         const {name, category, price, stock, thumbnail, measures} = formData
 
