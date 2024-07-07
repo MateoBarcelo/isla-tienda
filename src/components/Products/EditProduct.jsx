@@ -61,32 +61,31 @@ export function EditProduct() {
         
         const formImage = new FormData()
         formImage.append('file', imageForm)
-        
 
         const {name, category, price, stock, thumbnail, measures} = formData
 
         try {
-            const {fileUrl} = await productService.uploadImage(formImage, accessToken)
+            let imgUrl = productThumb
+
+            if(image) {
+                console.log("changed")
+                const {fileUrl} = await productService.uploadImage(formImage, accessToken)
+                imgUrl = fileUrl
+            }
 
             const product = {
                 title: name,
                 category,
                 price,
                 stock,
-                thumbnail: fileUrl,
+                thumbnail: imgUrl,
                 measures
             }
             
             await productService.edit(id, product, accessToken)
 
-            setFormData({
-                name: "Mueble",
-                category: "",
-                price: "",
-                stock: "",
-                thumbnail: "./logo.png",
-                measures: "1mt x 1mt x 50cm",
-            })
+            window.location.href = "/products"
+
             setTimeout(() => {
                 setAdded(false)
             }, 3000)
@@ -95,7 +94,6 @@ export function EditProduct() {
             console.log(error)
         }
 
-        setFormData({})
     }
 
     const handleInputChange = (fieldName, target) => {
