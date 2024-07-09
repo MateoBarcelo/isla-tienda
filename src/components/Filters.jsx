@@ -1,6 +1,7 @@
 import { useContext } from "react"
-import { FiltersContext } from "../context/filters"
+import { FiltersContext, MAX_PRICE } from "../context/filters"
 import { CategorySelector } from "./CategorySelector"
+
 export default function Filters() {
 
     const { filters, setFilters } = useContext(FiltersContext)
@@ -24,7 +25,7 @@ export default function Filters() {
             <div className="flex-col justify-center items-center">
                 <label htmlFor="price" className="text-center text-lg text-mint-900 -mb-3">Precio máximo</label>
                 <input type="range" id="price" className="w-[125px] appearance-none h-0.5 bg-mint-500 rounded-lg [&::-moz-range-thumb]:bg-mint-900 [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:h-[8px] [&::-moz-range-thumb]:w-[8px]
-             [&::-webkit-slider-thumb]:border-none [&::-webkit-slider-thumb]:h-[8px] [&::-webkit-slider-thumb]:w-[8px] [&::-moz-range-progress]:bg-mint-900" min={0} max={100000} 
+             [&::-webkit-slider-thumb]:border-none [&::-webkit-slider-thumb]:h-[8px] [&::-webkit-slider-thumb]:w-[8px] [&::-moz-range-progress]:bg-mint-900" min={0} max={MAX_PRICE} 
                 onChange={handleMaxChange} value={filters.maxPrice} step={2500} />
                 <span className="text-mint-900 absolute -bottom-4 text-center text-lg font-semibold text-opacity-70">${filters.maxPrice}</span>
             </div>
