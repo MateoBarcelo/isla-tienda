@@ -7,7 +7,7 @@ export const MAX_PRICE = 300000
 export function FiltersProvider({ children }) {
     const [filters, setFilters] = useState({
         category: 'all',
-        maxPrice: 300000
+        maxPrice: MAX_PRICE
       })
       
     return(
