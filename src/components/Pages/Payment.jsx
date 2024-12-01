@@ -9,7 +9,7 @@ export function Payment() {
 
     const params = new URLSearchParams(window.location.search);
 
-    const price = total + Number(params.get("send") === "flete" ? Number(import.meta.env.VITE_SENT_PRICE) : 0)
+    const price = total + (params.get("type") === "card" ? Number(total / 10) : 0)
 
     const renderPayment = () => {
         if(params.get("type") === "card") {

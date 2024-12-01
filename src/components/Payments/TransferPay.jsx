@@ -56,7 +56,7 @@ export function TransferPay({sendMethod, price}) {
                         <a target="_blank" href={`mailto:islamaderas@gmail.com?subject=¡Nueva compra!&body=${cartString}`} onClick={handleOrder} className="hover:underline hover:text-mint-700"> <strong>este correo</strong> (hace click!)</a>
                     </span>
                 </p>
-                <p className="text-lg font-regular">3. Una vez que recibamos el comprobante, te enviaremos un correo o mensaje confirmando la compra.</p>
+                <p className="text-lg font-regular">3. Una vez que recibamos el comprobante, te enviaremos un correo o mensaje confirmando la compra. Ten en cuenta que si elegiste envio por flete, tendras que hacer otra transferencia con el monto acordado por WhatsApp</p>
                 <Button onClick={() => window.location.href="/"} title="Volver al inicio" />
             </span>
         </div>

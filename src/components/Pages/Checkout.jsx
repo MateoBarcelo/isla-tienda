@@ -175,10 +175,11 @@ export function Checkout(props) {
                                 />
                             </div>
                         </div>
-                        <p className="text-right text-lg text-mint-900 text-opacity-80 pt-2">Productos: ${total}</p>
-                        <p className="text-right text-lg text-mint-900 text-opacity-80">Envío: ${envio}</p>
+                        <p className="text-right text-lg text-mint-900 text-opacity-80 pt-2">Productos: <p><strong>${total}</strong></p></p>
+                        {payMethod === "card" ? <p className="text-right text-lg text-mint-900 text-opacity-80">Interés: <p><strong>${total / 10}</strong></p></p> : null}
+                        {sendMethod === "flete" ? <p className="text-right text-lg text-mint-900 text-opacity-80">Envío: <p><strong><a href="https://wa.me/5493424067248" target="__blank" className="hover:underline">Consultar por WhatsApp</a></strong></p></p> : null}
                         <hr class="w-full h-[1px] my-4 bg-mint-900 border-0 rounded md:my-10"></hr>
-                        <p className="text-right text-xl text-mint-900 pt-4 pb-4 font-semibold">TOTAL: ${envio + total}</p>
+                        <p className="text-right text-xl text-mint-900 pt-4 pb-4 font-semibold">TOTAL: ${total + (payMethod === 'card' ? Number(total / 10) : 0)}</p>
                         <div className="grid">
                         <Button title={"Ir a pagar"} className={"-mb-3 w-full"} disabled={cart.length == 0 || payDisabled} onClick={handlePayRedirection}/>
                         </div>
