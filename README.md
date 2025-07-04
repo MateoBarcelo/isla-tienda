@@ -2,7 +2,7 @@
 
 Bienvenido/a a Isla Maderas, una aplicación web e-commerce construida con Tailwind CSS y React, integrando la API de Mercado Pago para aceptar tarjetas de crédito/debito.
 
-> www.islamaderas.shop
+> www.islamaderas.online
 
 ## Características Principales ◢
 
